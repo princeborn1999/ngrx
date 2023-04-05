@@ -1,10 +1,10 @@
 name: CI
 
-on: 
+on:
   push:
-    branches: [ main ]
-  pull_request: 
-    branches: [ main ]
+    branches: [ AaronNgrx ]
+  pull_request:
+    branches: [ AaronNgrx ]
   workflow_dispatch:
   
 jobs:
