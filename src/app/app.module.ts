@@ -10,6 +10,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
+
+import { HttpClientModule, HttpClient  } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
     LoginComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
