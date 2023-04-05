@@ -1,4 +1,3 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-// export const increment = createAction('[Counter Component] Increment');
-export const login = createAction<string>('[Login Component] Login');
+export const login = createAction('[Login Component] Login', props<{ account: string; password: string }>())

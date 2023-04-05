@@ -1,9 +1,28 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+  "users": [
+    {
+      "account": "asdasd",
+      "password": "qweqwe",
+      "status":{
+        "age": "24",
+        "name": "Alice"
+      }
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+  "cart":[
   ],
-  "profile": { "name": "typicode" }
+  "goods":[
+      {
+        "name": "cape",
+        "value": "399"
+      },
+      {
+        "name": "shoes",
+        "value": "2990"
+      },
+      {
+        "name": "claw",
+        "value": "599"
+      }
+  ]
 }
