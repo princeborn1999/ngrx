@@ -2,11 +2,7 @@
   "users": [
     {
       "account": "asdasd",
-      "password": "qweqwe",
-      "status":{
-        "age": "24",
-        "name": "Alice"
-      }
+      "password": "qweqwe"
     }
   ],
   "cart":[

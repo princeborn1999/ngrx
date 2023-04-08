@@ -10,7 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
-
+import { LoginEffects } from './login.effects';
 import { HttpClientModule, HttpClient  } from '@angular/common/http';
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { HttpClientModule, HttpClient  } from '@angular/common/http';
         test: true // generate tests for the selected actions
       },
     }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([LoginEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
