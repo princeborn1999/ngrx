@@ -1,5 +1,5 @@
 export interface LoginState {
-  email: string;
+  account: string;
   password: string;
   loading: boolean;
   error: string;

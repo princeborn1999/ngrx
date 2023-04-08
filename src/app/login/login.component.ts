@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { login } from '../login.actions';
+import { User } from 'src/models/user.interface';
+import { femaleUser, maleUser } from '../user.selector';
 import { AuthServiceService } from 'src/services/auth-service.service';
 @Component({
   selector: 'app-login',
@@ -10,6 +12,7 @@ import { AuthServiceService } from 'src/services/auth-service.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  femaleUsers$: Observable<User[]>
   account: string = '';
   password: string = '';
   error: string = '';
@@ -18,10 +21,11 @@ export class LoginComponent implements OnInit {
     private store: Store<any>,
     private auth: AuthServiceService
   ){
-
+    this.femaleUsers$ = new Observable<User[]>();
   }
   ngOnInit(): void {
     const loginSuccessful: boolean = true
+    this.femaleUsers$ = this.store.pipe(select(femaleUser));
   }
   onSubmit() {
     this.store.dispatch(
