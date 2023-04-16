@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { product } from 'src/app/model/interface';
+import { cartProduct } from 'src/app/model/productInterface';
+import * as addCartAction from '../../store/actions'
+import { cartProductSelector } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-product',
@@ -12,8 +17,9 @@ export class ProductComponent implements product{
   productPrice: number = 100;
   productCount: number = 100;
   productDesc: string= '商品描述描述';
+  cartProduct$?: Observable<cartProduct>;
 
-  constructor(){
+  constructor(private store: Store){
 
   }
 

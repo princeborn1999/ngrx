@@ -1,1 +1,28 @@
-<p>cart works!</p>
+<table>
+  <tr>
+    <td><input type="checkbox"></td>
+    <td>商品</td>
+    <td>單價</td>
+    <td>數量</td>
+    <td>總計</td>
+  </tr>
+  <tr *ngFor="let product of productList">
+    <td><input type="checkbox"></td>
+    <td>
+      <div>
+        <img src="" alt="">
+      </div>
+      <h2>{{product.productName}}</h2>
+    </td>
+    <td>{{product.productPrice}}</td>
+    <td>
+      <p>+</p>
+      <input type="number" value={{product.productCount}}>
+      <p>-</p>
+    </td>
+    <td>{{product.productCount * product.productPrice}}</td>
+  </tr>
+</table>
+
+<div>總金額(n個商品) $100</div>
+<button>去買單</button>
