@@ -1,5 +1,6 @@
-import { cartProduct } from './productInterface';
+import { productInterface } from './productInterface';
 
 export interface appStateInterface {
-  cartProduct: cartProduct;
+  products: productInterface[];
+  cartProducts: productInterface[];
 }

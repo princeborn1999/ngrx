@@ -2,30 +2,47 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { product } from 'src/app/model/interface';
-import { cartProduct } from 'src/app/model/productInterface';
 import * as addCartAction from '../../store/actions'
-import { cartProductSelector } from 'src/app/store/selectors';
+import { cartProductsSelector } from 'src/app/store/selectors';
+import { productInterface } from 'src/app/model/productInterface';
+import { appStateInterface } from 'src/app/model/appStateInterface';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements product{
+export class ProductComponent {
   productId: string = '1';
   productName: string = '商品名稱';
   productPrice: number = 100;
   productCount: number = 100;
   productDesc: string= '商品描述描述';
-  cartProduct$?: Observable<cartProduct>;
+  cartProduct$?: Observable<productInterface[]>;
+  form: FormGroup = new FormGroup({
+    count: new FormControl('')
+  })
 
-  constructor(private store: Store){
-
+  constructor(private store: Store<appStateInterface>){
+    this.cartProduct$ = this.store.pipe(select(cartProductsSelector))
   }
 
 
   addCart(productId: string, count: string){
-
+    console.log('addCart')
+    const cartProduct = {
+      productId: productId,
+      productName: this.productName,
+      productPrice: +this.productName,
+      productCount: +count,
+      productDesc: this.productDesc,
+    }
+    console.log('cartProduct',cartProduct)
+    this.store.dispatch(
+      addCartAction.addCart({cartProduct: [cartProduct]})
+    )
   }
 
   getcoupon(productId: string){
