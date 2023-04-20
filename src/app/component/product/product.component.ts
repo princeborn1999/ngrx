@@ -44,7 +44,9 @@ export class ProductComponent {
       addCartAction.addCart({cartProduct: [cartProduct]})
     )
   }
-
+  buy(){
+    
+  }
   getcoupon(productId: string){
 
   }
