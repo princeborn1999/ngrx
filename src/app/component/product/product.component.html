@@ -17,8 +17,9 @@
   <p>-</p>
   <p>{{productDesc}}</p>
 
-  <button (click)="addCart(productId,form.value.count)">加入購物車</button>
-  <button>直接購買</button>
 </form>
+
+<button (click)="addCart(productId,form.value.count)">加入購物車</button>
+<button>直接購買</button>
 
 {{form.value | json}}

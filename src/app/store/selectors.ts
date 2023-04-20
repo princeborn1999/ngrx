@@ -5,5 +5,5 @@ export const selectFeature = (state: appStateInterface) => state;
 
 export const cartProductsSelector = createSelector(
   selectFeature,
-  (state) => state.cartProducts
+  (state) => {console.log('select state',state); return state.cartProducts}
 )

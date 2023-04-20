@@ -7,6 +7,7 @@ import { ProductComponent } from './component/product/product.component';
 import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
 import { StoreModule } from '@ngrx/store';
+import { cartReducers } from './store/reducers';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { StoreModule } from '@ngrx/store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({cart: cartReducers})
   ],
   providers: [],
   bootstrap: [AppComponent]

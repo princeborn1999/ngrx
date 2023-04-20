@@ -8,10 +8,15 @@ export const initailState: appStateInterface = {
   cartProducts: []
 };
 
-export const reducers = createReducer(
+export const cartReducers = createReducer(
   initailState,
-  on(addCartAction.addCart, (state, action) => ({
+  on(addCartAction.addCart, (state, action) => {
+    console.log('cartReducers')
+    console.log('state',state)
+    console.log('action',action)
+
+    return {
     ...state,
     cartProducts: action.cartProduct
-  }))
+  }})
 )

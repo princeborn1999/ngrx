@@ -22,6 +22,5 @@ export class CartComponent {
     this.cartProduct$?.subscribe(res => {
       console.log('res',res)
       this.productList = res})
-
   }
 }
