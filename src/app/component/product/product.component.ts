@@ -21,6 +21,7 @@ export class ProductComponent {
   productCount: number = 100;
   productDesc: string= '商品描述描述';
   cartProduct$?: Observable<productInterface[]>;
+  count: number = 0;
   form: FormGroup = new FormGroup({
     count: new FormControl('')
   })
@@ -31,17 +32,22 @@ export class ProductComponent {
 
 
   addCart(productId: string, count: string){
+    this.count++;
     console.log('addCart')
     const cartProduct = {
       productId: productId,
       productName: this.productName,
       productPrice: +this.productName,
-      productCount: +count,
+      productCount: this.count,
       productDesc: this.productDesc,
     }
     console.log('cartProduct',cartProduct)
     this.store.dispatch(
       addCartAction.addCart({cartProduct: [cartProduct]})
+    )
+
+    this.store.dispatch(
+      addCartAction.test({test: this.count})
     )
   }
 

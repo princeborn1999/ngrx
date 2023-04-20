@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { appStateInterface } from 'src/app/model/appStateInterface';
 import { productInterface } from 'src/app/model/productInterface';
-import { cartProductsSelector } from 'src/app/store/selectors';
+import { cartProductsSelector, testSelector } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-cart',
@@ -13,14 +13,23 @@ import { cartProductsSelector } from 'src/app/store/selectors';
 export class CartComponent {
   productList: productInterface[] = [];
   cartProduct$?: Observable<productInterface[]>;
+  testProduct$?: Observable<any>;
 
   constructor(private store: Store<appStateInterface>) {
-    this.cartProduct$ = this.store.pipe(select(cartProductsSelector))
+    this.cartProduct$ = this.store.select(cartProductsSelector);
+    this.testProduct$ = this.store.select(testSelector);
   }
 
   ngOnInit(): void {
+    this.update()
+  }
+
+  update() {
     this.cartProduct$?.subscribe(res => {
-      console.log('res',res)
-      this.productList = res})
+      console.log('res', res)
+      this.productList = res
+    })
+
+    this.testProduct$?.subscribe(res => console.log('asdasd'))
   }
 }

@@ -7,3 +7,8 @@ export const cartProductsSelector = createSelector(
   selectFeature,
   (state) => {console.log('select state',state); return state.cartProducts}
 )
+
+export const testSelector = createSelector(
+  selectFeature,
+  (state) => { return state.test}
+)

@@ -5,7 +5,8 @@ import { appStateInterface } from '../model/appStateInterface';
 
 export const initailState: appStateInterface = {
   products: [],
-  cartProducts: []
+  cartProducts: [],
+  test: 0
 };
 
 export const cartReducers = createReducer(
@@ -14,9 +15,21 @@ export const cartReducers = createReducer(
     console.log('cartReducers')
     console.log('state',state)
     console.log('action',action)
+    let obj = action.cartProduct;
+
 
     return {
     ...state,
-    cartProducts: action.cartProduct
+    cartProducts: obj
+  }}),
+  on(addCartAction.test, (state, action) => {
+    // console.log('cartReducers')
+    // console.log('state',state)
+    // console.log('action',action)
+
+
+    return {
+    ...state,
+    cartProducts: action.test
   }})
 )
