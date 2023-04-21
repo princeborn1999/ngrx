@@ -8,13 +8,15 @@ import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
 import { StoreModule } from '@ngrx/store';
 import { cartReducers } from './store/reducers';
+import { NavComponent } from './component/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

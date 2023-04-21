@@ -50,7 +50,9 @@ export class ProductComponent {
       addCartAction.test({test: this.count})
     )
   }
-
+  buy(){
+    
+  }
   getcoupon(productId: string){
 
   }
