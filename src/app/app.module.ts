@@ -10,6 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { cartReducers } from './store/reducers';
 import { NavComponent } from './component/nav/nav.component';
 import { ComponentModule } from './component/component.module';
+import { EffectsModule } from '@ngrx/effects';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { ComponentModule } from './component/component.module';
     BrowserModule,
     AppRoutingModule,
     ComponentModule,
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import * as addCartAction from './actions'
 import { appStateInterface } from '../model/appStateInterface';
 import { productInterface } from '../model/productInterface';
 
-export const initailState: appStateInterface = {
+export const initialState: appStateInterface = {
   products: [{
     productId: '1',
     productName: '商品A',
@@ -13,9 +13,15 @@ export const initailState: appStateInterface = {
   }],
   cartProducts: []
 };
+// export const productReducer = createReducer(
+//   initialState,
+//   on(ProductActions.loadProductsSuccess, (state, { products }) =>({...state,
+//     products
+//   }))
+// );
 
 export const cartReducers = createReducer(
-  initailState,
+  initialState,
   on(addCartAction.addCart, (state, action) => {
     let cartProducts: productInterface[] = [];
     //TODO 待優化

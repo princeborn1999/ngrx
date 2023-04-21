@@ -6,8 +6,9 @@ import { appStateInterface } from 'src/app/model/appStateInterface';
 import { productInterface } from 'src/app/model/productInterface';
 import { productsSelector } from 'src/app/store/selectors';
 import * as addCartAction from '../../store/actions';
-
-
+import { MatDialog } from '@angular/material/dialog';
+import { AlertComponent } from '../alert/alert.component';
+import { loadProducts } from '../../store/actions';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -15,11 +16,15 @@ import * as addCartAction from '../../store/actions';
 })
 export class ProductComponent {
   productList$?: Observable<productInterface[]>;
+  dataSource: any = []
   form: FormGroup = new FormGroup({
     count: new FormControl('1')
   })
 
-  constructor(private store: Store<appStateInterface>) {
+  constructor(
+    private store: Store<appStateInterface>,
+    private dialog: MatDialog
+    ) {
     this.productList$ = this.store.select(productsSelector);
   }
 
@@ -35,8 +40,13 @@ export class ProductComponent {
     this.store.dispatch(
       addCartAction.addCart({ cartProduct: cartProduct })
     )
+
+    // const dialogRef = this.dialog.open(AlertComponent);
+    // dialogRef.afterClosed().subscribe((result:any) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
-  buy() {
+  buy(){
 
   }
   getcoupon(productId: string) {

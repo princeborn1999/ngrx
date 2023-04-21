@@ -23,6 +23,10 @@ export class CartComponent {
   }
 
   ngOnInit(): void {
+    this.update()
+  }
+
+  update() {
     this.cartProduct$?.subscribe(res => {
       this.productList = res
     })
