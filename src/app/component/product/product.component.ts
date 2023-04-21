@@ -7,14 +7,16 @@ import { cartProductsSelector } from 'src/app/store/selectors';
 import { productInterface } from 'src/app/model/productInterface';
 import { appStateInterface } from 'src/app/model/appStateInterface';
 import { FormControl, FormGroup } from '@angular/forms';
-
-
+import { MatDialog } from '@angular/material/dialog';
+import { AlertComponent } from '../alert/alert.component';
+import { loadProducts } from '../../store/actions';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
+  dataSource: any = []
   productId: string = '1';
   productName: string = '商品名稱';
   productPrice: number = 100;
@@ -26,7 +28,10 @@ export class ProductComponent {
     count: new FormControl('')
   })
 
-  constructor(private store: Store<appStateInterface>){
+  constructor(
+    private store: Store<appStateInterface>,
+    private dialog: MatDialog
+    ){
     this.cartProduct$ = this.store.pipe(select(cartProductsSelector))
   }
 
@@ -49,9 +54,13 @@ export class ProductComponent {
     this.store.dispatch(
       addCartAction.test({test: this.count})
     )
+    const dialogRef = this.dialog.open(AlertComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   buy(){
-    
+
   }
   getcoupon(productId: string){
 

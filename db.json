@@ -1,0 +1,39 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "會員"
+    }
+  ],
+  "products": [
+    {
+      "productId": "1",
+      "productName": "商品名稱",
+      "productPrice": 2222,
+      "productCount": 12,
+      "productDesc": "商品描述描述"
+    },
+    {
+      "productId": "2",
+      "productName": "商品名稱",
+      "productPrice": 1111,
+      "productCount": 11,
+      "productDesc": "商品描述描述"
+    }
+  ],
+  "couple": [
+    {
+      "id": "12345",
+      "name": "typicode"
+    },
+    {
+      "id": "12345",
+      "name": "typicode"
+    },
+    {
+      "id": "12345",
+      "name": "typicode"
+    }
+  ]
+
+}
