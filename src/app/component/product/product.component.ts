@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { product } from 'src/app/model/interface';
-import * as addCartAction from '../../store/actions'
-import { cartProductsSelector } from 'src/app/store/selectors';
-import { productInterface } from 'src/app/model/productInterface';
-import { appStateInterface } from 'src/app/model/appStateInterface';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { appStateInterface } from 'src/app/model/appStateInterface';
+import { productInterface } from 'src/app/model/productInterface';
+import { productsSelector } from 'src/app/store/selectors';
+import * as addCartAction from '../../store/actions';
 
 
 @Component({
@@ -15,39 +14,43 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  productId: string = '1';
-  productName: string = '商品名稱';
-  productPrice: number = 100;
-  productCount: number = 100;
-  productDesc: string= '商品描述描述';
-  cartProduct$?: Observable<productInterface[]>;
+  productList$?: Observable<productInterface[]>;
   form: FormGroup = new FormGroup({
-    count: new FormControl('')
+    count: new FormControl('1')
   })
 
-  constructor(private store: Store<appStateInterface>){
-    this.cartProduct$ = this.store.pipe(select(cartProductsSelector))
+  constructor(private store: Store<appStateInterface>) {
+    this.productList$ = this.store.select(productsSelector);
   }
 
-
-  addCart(productId: string, count: string){
-    console.log('addCart')
+  addCart(product: productInterface) {
     const cartProduct = {
-      productId: productId,
-      productName: this.productName,
-      productPrice: +this.productName,
-      productCount: +count,
-      productDesc: this.productDesc,
+      productId: product.productId,
+      productName: product.productName,
+      productPrice: +product.productPrice,
+      productCount: this.form.value.count,
+      productDesc: product.productDesc
     }
-    console.log('cartProduct',cartProduct)
+
     this.store.dispatch(
-      addCartAction.addCart({cartProduct: [cartProduct]})
+      addCartAction.addCart({ cartProduct: cartProduct })
     )
   }
-  buy(){
-    
-  }
-  getcoupon(productId: string){
+  buy() {
 
+  }
+  getcoupon(productId: string) {
+
+  }
+
+  add() {
+    const nowCount = +this.form.value.count;
+    this.form.get('count')?.setValue(nowCount + 1);
+  }
+
+  reduce() {
+    const nowCount = +this.form.value.count;
+    if(nowCount <= 1) return;
+    this.form.get('count')?.setValue(nowCount - 1);
   }
 }

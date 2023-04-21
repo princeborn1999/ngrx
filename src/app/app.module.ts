@@ -9,19 +9,21 @@ import { CartComponent } from './component/cart/cart.component';
 import { StoreModule } from '@ngrx/store';
 import { cartReducers } from './store/reducers';
 import { NavComponent } from './component/nav/nav.component';
+import { ComponentModule } from './component/component.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    HomeComponent,
-    CartComponent,
-    NavComponent
+    // ProductComponent,
+    // HomeComponent,
+    // CartComponent,
+    // NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({cart: cartReducers})
+    ComponentModule,
+    StoreModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent]

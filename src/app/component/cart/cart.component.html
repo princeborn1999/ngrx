@@ -7,7 +7,7 @@
     <td>總計</td>
   </tr>
   <tr *ngFor="let product of productList">
-    <td><input type="checkbox"></td>
+    <td><input type="checkbox" (change)="check(product)"></td>
     <td>
       <div>
         <img src="" alt="">
@@ -24,5 +24,6 @@
   </tr>
 </table>
 
-<div>總金額(n個商品) $100</div>
-<button>去買單</button>
+<div>總金額(n個商品) $</div>
+<p>{{feeSum()}}</p>
+<button (click)="buy()" [disabled]="!checkedList.length">去買單</button>
