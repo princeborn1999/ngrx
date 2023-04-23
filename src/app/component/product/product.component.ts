@@ -9,6 +9,7 @@ import * as addCartAction from '../../store/actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertComponent } from '../alert/alert.component';
 import { loadProducts } from '../../store/actions';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -23,9 +24,16 @@ export class ProductComponent {
 
   constructor(
     private store: Store<appStateInterface>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
     ) {
     this.productList$ = this.store.select(productsSelector);
+  }
+
+  ngOninit(){
+    this.productList$?.subscribe(res => {
+
+    })
   }
 
   addCart(product: productInterface) {
@@ -46,9 +54,11 @@ export class ProductComponent {
     //   console.log(`Dialog result: ${result}`);
     // });
   }
-  buy(){
 
+  buy(){
+    this.router.navigate(['./cart'])
   }
+
   getcoupon(productId: string) {
 
   }

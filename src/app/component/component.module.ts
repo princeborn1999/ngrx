@@ -6,12 +6,13 @@ import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { NavComponent } from './nav/nav.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     StoreModule.forFeature('cart', cartReducers)
   ],
   declarations: [

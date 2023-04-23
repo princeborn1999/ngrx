@@ -2,6 +2,8 @@ import { createAction, props } from '@ngrx/store';
 import { productInterface } from '../model/productInterface';
 
 export const addCart = createAction('[addCart]',props<{cartProduct: productInterface}>())
+export const plus = createAction('[plus]',props<{cartProduct: productInterface}>())
+export const reduce = createAction('[reduce]',props<{cartProduct: productInterface}>())
 export const buy = createAction('[buy]',props<{products: productInterface[]}>())
 
 export const loadProducts = createAction('[Product] Load Products');

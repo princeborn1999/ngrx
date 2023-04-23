@@ -18,7 +18,7 @@ export class CartComponent {
   checkedList: productInterface[] = [];
 
   constructor(private store: Store<appStateInterface>) {
-    this.cartProduct$ = this.store.pipe(select(cartProductsSelector))
+    this.cartProduct$ = this.store.select(cartProductsSelector);
     this.productList$ = this.store.select(productsSelector);
   }
 
@@ -38,17 +38,31 @@ export class CartComponent {
     )
   }
 
-  //TODO BUG 會重複加總
   feeSum() {
     return this.checkedList.reduce((a: number, b: productInterface) => {
       return a + b.productPrice * b.productCount
     }, 0)
   }
 
-  //TODO 取消勾選尚未做
   //TODO 全選尚未做
-  check(product: productInterface) {
-    console.log('product', product)
-    this.checkedList = [...this.checkedList, product]
+  check(product: productInterface, event: any) {
+    if (event.target.checked) {
+      this.checkedList = [...this.checkedList, product]
+    } else {
+      this.checkedList = this.checkedList.filter(value => value.productId !== product.productId)
+    }
+  }
+
+  add(index: number) {
+    this.store.dispatch(
+      addCartAction.plus({ cartProduct: this.productList[index] })
+    )
+  }
+
+  reduce(index: number, count: number) {
+    if (count <= 1) return;
+    this.store.dispatch(
+      addCartAction.reduce({ cartProduct: this.productList[index] })
+    )
   }
 }
