@@ -1,28 +1,29 @@
-<table>
-  <tr>
-    <td><input type="checkbox"></td>
-    <td>商品</td>
-    <td>單價</td>
-    <td>數量</td>
-    <td>總計</td>
-  </tr>
-  <tr *ngFor="let product of productList,let i = index">
-    <td><input type="checkbox" (change)="check(product,$event)"></td>
-    <td>
-      <div>
-        <img src="" alt="">
-      </div>
-      <h2>{{product.productName}}</h2>
-    </td>
-    <td>{{product.productPrice}}</td>
-    <td>
-      <p (click)="add(i)">+</p>
-      <input type="number" value={{product.productCount}}>
-      <p (click)="reduce(i, product.productCount)">-</p>
-    </td>
-    <td>{{product.productCount * product.productPrice}}</td>
-  </tr>
-</table>
+<div class="shadow-lg m-5 p-5">
+  <table>
+    <tr>
+      <td><input type="checkbox"></td>
+      <td>商品</td>
+      <td>單價</td>
+      <td>數量</td>
+      <td>總計</td>
+    </tr>
+    <tr *ngFor="let product of productList,let i = index">
+      <td><input type="checkbox" (change)="check(product,$event)"></td>
+      <td>
+        <div>
+          <img src="" alt="">
+        </div>
+        <h2>{{product.productName}}</h2>
+      </td>
+      <td>{{product.productPrice}}</td>
+      <td>
+        <p (click)="add(i)">+</p>
+        <input type="number" value={{product.productCount}}>
+        <p (click)="reduce(i, product.productCount)">-</p>
+      </td>
+      <td>{{product.productCount * product.productPrice}}</td>
+    </tr>
+  </table>
 
 <h2>總金額(個商品)</h2>
 <h2>${{feeSum()}}</h2>
@@ -30,3 +31,4 @@
   class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
   [disabled]="!checkedList.length" (click)="buy()">去買單
 </button>
+</div>

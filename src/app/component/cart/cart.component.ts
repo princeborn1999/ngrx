@@ -5,7 +5,7 @@ import { appStateInterface } from 'src/app/model/appStateInterface';
 import { productInterface } from 'src/app/model/productInterface';
 import { cartProductsSelector, productsSelector, testSelector } from 'src/app/store/selectors';
 import * as addCartAction from '../../store/actions'
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -17,7 +17,11 @@ export class CartComponent {
   productList$?: Observable<productInterface[]>;
   checkedList: productInterface[] = [];
 
-  constructor(private store: Store<appStateInterface>) {
+  constructor(
+    private store: Store<appStateInterface>,
+    private router: Router,
+    private route:ActivatedRoute
+    ) {
     this.cartProduct$ = this.store.select(cartProductsSelector);
     this.productList$ = this.store.select(productsSelector);
   }
@@ -36,6 +40,10 @@ export class CartComponent {
     this.store.dispatch(
       addCartAction.buy({ products: this.checkedList })
     )
+    this.router.navigate(['../index'],
+    {
+      relativeTo: this.route
+    })
   }
 
   feeSum() {
