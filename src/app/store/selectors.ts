@@ -10,8 +10,8 @@ export const cartProductsSelector = createSelector(
 )
 
 export const productsSelector = createSelector(
-  selectFeature,
-  (state) => state.cart.products
+  selectProducts,
+  (state) => { return state.products}
 )
 
 export const testSelector = createSelector(

@@ -8,17 +8,17 @@
   "products": [
     {
       "productId": "1",
-      "productName": "商品名稱",
-      "productPrice": 2222,
-      "productCount": 12,
-      "productDesc": "商品描述描述"
+      "productName": "商品A",
+      "productPrice": 90,
+      "productCount": 99,
+      "productDesc": "我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A我是商品A"
     },
     {
       "productId": "2",
-      "productName": "商品名稱",
-      "productPrice": 1111,
-      "productCount": 11,
-      "productDesc": "商品描述描述"
+      "productName": "商品B",
+      "productPrice": 80,
+      "productCount": 50,
+      "productDesc": "我是商品B我是商品B我是商品B我是商品B我是商品B我是商品B我是商品B我是商品B我是商品B"
     }
   ],
   "couple": [

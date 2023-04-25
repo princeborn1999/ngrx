@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -8,14 +8,15 @@ import { productsSelector } from 'src/app/store/selectors';
 import * as addCartAction from '../../store/actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertComponent } from '../alert/alert.component';
-import { loadProducts } from '../../store/actions';
+import { loadProducts, loadProductsSuccess, loadProductsFailure  } from '../../store/actions';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit{
   productList$?: Observable<productInterface[]>;
   dataSource: any = []
   form: FormGroup = new FormGroup({
@@ -30,10 +31,8 @@ export class ProductComponent {
     this.productList$ = this.store.select(productsSelector);
   }
 
-  ngOninit(){
-    this.productList$?.subscribe(res => {
-
-    })
+  ngOnInit(){
+    this.store.dispatch(loadProducts());
   }
 
   addCart(product: productInterface) {

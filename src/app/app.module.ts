@@ -12,23 +12,21 @@ import { NavComponent } from './component/nav/nav.component';
 import { ComponentModule } from './component/component.module';
 import { EffectsModule } from '@ngrx/effects';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
+import { ProductEffects } from './store/effect';
+import { HttpClientModule } from '@angular/common/http';
+import { productReducer } from './store/reducers';
 @NgModule({
   declarations: [
     AppComponent,
-    // ProductComponent,
-    // HomeComponent,
-    // CartComponent,
-    // NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ComponentModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
-    MatDialogModule
+    StoreModule.forRoot({ products: productReducer }),
+    EffectsModule.forRoot([ProductEffects]),
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

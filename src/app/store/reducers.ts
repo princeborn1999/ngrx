@@ -1,20 +1,26 @@
 import { createReducer, on } from '@ngrx/store';
 import * as addCartAction from './actions'
+import * as ProductActions from './actions'
 import { appStateInterface } from '../model/appStateInterface';
 import { productInterface } from '../model/productInterface';
 import { productList } from 'src/assets/mock/mockProducts';
 
 
 export const initialState: appStateInterface = {
-  products: productList,
+  // products: productList,
+  products: [],
   cartProducts: []
 };
-// export const productReducer = createReducer(
-//   initialState,
-//   on(ProductActions.loadProductsSuccess, (state, { products }) =>({...state,
-//     products
-//   }))
-// );
+export const productReducer = createReducer(
+  initialState,
+  on(ProductActions.loadProductsSuccess, (state, { products }) =>{
+    console.log('Products updated:', products);
+    return {
+      ...state,
+      products
+    };
+  })
+);
 
 export const cartReducers = createReducer(
   initialState,
@@ -86,7 +92,6 @@ export const cartReducers = createReducer(
         return product;
       })
     }
-
     return {
       ...state,
       products: products()
