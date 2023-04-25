@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ AaronNgrx ]
+    branches: [ shop ]
   pull_request:
-    branches: [ AaronNgrx ]
+    branches: [ shop ]
   workflow_dispatch:
   
 jobs:
