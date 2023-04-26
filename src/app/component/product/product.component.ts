@@ -10,13 +10,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { AlertComponent } from '../alert/alert.component';
 import { loadProducts, loadProductsSuccess, loadProductsFailure  } from '../../store/actions';
 import { Router } from '@angular/router';
-
+import { Product } from 'src/interface';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit{
+export class ProductComponent implements OnInit, Product{
   productList$?: Observable<productInterface[]>;
   dataSource: any = []
   form: FormGroup = new FormGroup({
@@ -32,7 +32,7 @@ export class ProductComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.store.dispatch(loadProducts());
+    this.getData()
   }
 
   addCart(product: productInterface) {
@@ -53,13 +53,15 @@ export class ProductComponent implements OnInit{
     //   console.log(`Dialog result: ${result}`);
     // });
   }
-
+  getData(): void{
+    this.store.dispatch(loadProducts());
+  }
   buy(){
     this.router.navigate(['./cart'])
   }
 
-  getcoupon(productId: string) {
-
+  getCoupon(productId: string) {
+    console.log('getCoupon')
   }
 
   add() {

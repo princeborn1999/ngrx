@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
+export class CartComponent  {
   productList: productInterface[] = [];
   cartProduct$?: Observable<productInterface[]>;
   productList$?: Observable<productInterface[]>;
