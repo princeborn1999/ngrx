@@ -42,8 +42,8 @@ export const cartReducers = createReducer(
     return {
       ...state,
       cartProducts: hasSameProduct ?
-        [...changeCartCounts()] :
-        [...state.cartProducts, action.cartProduct]
+                    [...changeCartCounts()] :
+                    [...state.cartProducts, action.cartProduct]
     }
   }),
   on(addCartAction.plus, (state, action) => {
@@ -53,7 +53,7 @@ export const cartReducers = createReducer(
           return {
             ...product,
             productCount: action.cartProduct.productCount + 1
-          };
+          }
         return { ...product };
       });
     }
