@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { appStateInterface } from 'src/app/model/appStateInterface';
 import { productInterface } from 'src/app/model/productInterface';
 import { cartProductsSelector } from 'src/app/store/selectors';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-nav',
@@ -11,6 +12,7 @@ import { cartProductsSelector } from 'src/app/store/selectors';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
+  @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
   cartProduct$?: Observable<productInterface[]>;
   totalProduct?: number;
 

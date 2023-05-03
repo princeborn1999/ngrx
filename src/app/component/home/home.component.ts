@@ -15,4 +15,6 @@ export class HomeComponent {
 		config.showNavigationArrows = true;
 		config.showNavigationIndicators = true;
 	}
+  setAll(d: any){
+  }
 }

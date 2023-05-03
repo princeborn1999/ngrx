@@ -13,6 +13,31 @@
     </ng-template>
   </ngb-carousel>
 </div>
-<div class="p-5">
+<div class="p-5 justify-center">
+  <h2 class="shadow-sm">Our Products</h2>
+  <!-- filter -->
+  <section class="flex">
+    <mat-checkbox
+                  [checked]=""
+                  [color]=""
+                  [indeterminate]=""
+                  (change)="setAll($event.checked)">
+      Select All
+    </mat-checkbox>
+    <mat-checkbox
+                  [checked]=""
+                  [color]=""
+                  [indeterminate]=""
+                  (change)="setAll($event.checked)">
+      Male
+    </mat-checkbox>
+    <mat-checkbox
+                  [checked]=""
+                  [color]=""
+                  [indeterminate]=""
+                  (change)="setAll($event.checked)">
+      Female
+    </mat-checkbox>
+  </section>
   <app-product></app-product>
 </div>

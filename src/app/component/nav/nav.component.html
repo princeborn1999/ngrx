@@ -10,6 +10,12 @@
     <li>
       <button mat-button><a routerLink="/login">Login</a></button>
     </li>
+    <li>
+      <button mat-button [matMenuTriggerFor]="menu"><a>Menu</a></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>More</button>
+      </mat-menu>
+    </li>
   </ul>
   <!-- SearchBar -->
   <form>
