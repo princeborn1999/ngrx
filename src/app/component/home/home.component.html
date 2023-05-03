@@ -1,3 +1,18 @@
+<div class="p-5 justify-center">
+  <ngb-carousel
+    *ngIf="images"
+    [showNavigationArrows]="showNavigationArrows"
+    [showNavigationIndicators]="showNavigationIndicators"
+  >
+    <ng-template ngbSlide *ngFor="let image of images">
+      <div class="picsum-img-wrapper">
+        <img [src]="image" alt="Random slide" />
+      </div>
+      <div class="carousel-caption">
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
 <div class="p-5">
   <app-product></app-product>
 </div>

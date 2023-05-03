@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductEffects } from './store/effect';
 import { HttpClientModule } from '@angular/common/http';
 import { productReducer } from './store/reducers';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +24,11 @@ import { productReducer } from './store/reducers';
     BrowserModule,
     AppRoutingModule,
     ComponentModule,
+    HttpClientModule,
+    MatDialogModule,
     StoreModule.forRoot({ products: productReducer }),
     EffectsModule.forRoot([ProductEffects]),
-    MatDialogModule,
-    HttpClientModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
