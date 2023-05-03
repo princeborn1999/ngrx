@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -16,7 +16,14 @@ import { Product } from 'src/interface';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit, Product{
+export class ProductComponent implements OnInit {
+  @Input() product!: productInterface;
+  productId: string = '';
+  productName: string = '';
+  productPrice: number = 0;
+  productCount: number = 0;
+  productDesc: string = '';
+
   productList$?: Observable<productInterface[]>;
   dataSource: any = []
   form: FormGroup = new FormGroup({
@@ -28,11 +35,16 @@ export class ProductComponent implements OnInit, Product{
     private dialog: MatDialog,
     private router: Router
     ) {
-    this.productList$ = this.store.select(productsSelector);
+    // this.productList$ = this.store.select(productsSelector);
   }
 
   ngOnInit(){
-    this.getData()
+    this.productId = this.product.productId;
+    this.productName = this.product.productName;
+    this.productPrice = this.product.productPrice;
+    this.productCount = this.product.productCount;
+    this.productDesc = this.product.productDesc;
+    // this.getData()
   }
 
   addCart(product: productInterface) {
@@ -53,9 +65,9 @@ export class ProductComponent implements OnInit, Product{
     //   console.log(`Dialog result: ${result}`);
     // });
   }
-  getData(): void{
-    this.store.dispatch(loadProducts());
-  }
+  // getData(): void{
+  //   this.store.dispatch(loadProducts());
+  // }
   buy(){
     this.router.navigate(['./cart'])
   }

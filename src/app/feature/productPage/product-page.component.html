@@ -1,0 +1,5 @@
+<p>123456</p>
+
+<div *ngIf="productList$ | async as productList" class="flex flex-wrap">
+  <app-product *ngFor="let product of productList" [product]="product"></app-product>
+</div>
