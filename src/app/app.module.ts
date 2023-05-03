@@ -16,6 +16,7 @@ import { ProductEffects } from './store/effect';
 import { HttpClientModule } from '@angular/common/http';
 import { productReducer } from './store/reducers';
 import { ProductPageComponent } from './feature/productPage/product-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +26,11 @@ import { ProductPageComponent } from './feature/productPage/product-page.compone
     BrowserModule,
     AppRoutingModule,
     ComponentModule,
+    HttpClientModule,
+    MatDialogModule,
     StoreModule.forRoot({ products: productReducer }),
     EffectsModule.forRoot([ProductEffects]),
-    MatDialogModule,
-    HttpClientModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
