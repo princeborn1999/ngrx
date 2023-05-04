@@ -11,10 +11,23 @@ import { AlertComponent } from '../alert/alert.component';
 import { loadProducts, loadProductsSuccess, loadProductsFailure  } from '../../store/actions';
 import { Router } from '@angular/router';
 import { Product } from 'src/interface';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  animations: [
+    trigger('transformMenu', [
+      state('void', style({
+        transform: 'scaleY(0)'
+      })),
+      state('enter', style({
+        transform: 'scaleY(1)'
+      })),
+      transition('void <=> enter', animate('120ms cubic-bezier(0, 0, 0.2, 1)'))
+    ])
+  ]
 })
 export class ProductComponent implements OnInit {
   @Input() product!: productInterface;
@@ -34,6 +47,7 @@ export class ProductComponent implements OnInit {
     private store: Store<appStateInterface>,
     private dialog: MatDialog,
     private router: Router,
+    private _snackBar: MatSnackBar
     ) {
     this.productList$ = this.store.select(productsSelector);
   }
@@ -48,6 +62,7 @@ export class ProductComponent implements OnInit {
   }
 
   addCart(product: productInterface) {
+    this._snackBar.open("Adding Sucess!", "close");
     const cartProduct = {
       productId: product.productId,
       productName: product.productName,

@@ -19,6 +19,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { ProductPageComponent } from '../feature/productPage/product-page.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [
     RouterModule,
@@ -34,6 +36,8 @@ import { MatCardModule } from '@angular/material/card';
     NgbCarouselModule,
     MatMenuModule,
     MatCardModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
     StoreModule.forFeature('cart', cartReducers)
   ],
   declarations: [
