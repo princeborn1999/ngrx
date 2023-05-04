@@ -1,39 +1,37 @@
-<!-- <ng-container *ngIf="productList$ | async as productList">
-  <div class="flex flex-wrap">
-    <div *ngFor="let product of productList,let i = index" class="max-w-sm rounded overflow-hidden shadow-lg"> -->
-      <form [formGroup]="form" class="max-w-sm rounded overflow-hidden shadow-lg">
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{{productId}} {{productName}}</div>
-          <p class="text-gray-700 text-base">
-            價格 : {{productPrice}}
-          </p>
-          <p>
-            {{productDesc}}
-          </p>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-          <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">★★★★★</span>
-          <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">已售出100件</span>
-          <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">賣場優惠券</span>
-        </div>
-        <div class="flex justify-center">
-          <p (click)="reduce()">-</p>
-          <input type="number" formControlName="count">
-          <p (click)="add()">+</p>
-        </div>
-        <p>還剩{{productCount}}件</p>
-      </form>
-      <button
-        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
-        (click)="addCart(product)">加入購物車
-      </button>
-      <button
-        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
-        (click)="buy()">直接購買
-      </button>
-    <!-- </div>
-  </div>
-</ng-container> -->
+<div class="shadow-sm">
+  <img src="../../../assets/img/4945247381306_400.webp" alt="">
+  <form [formGroup]="form">
+    <div class="px-6 py-4">
+      <p class="font-bold text-xl mb-2">{{productId}} {{productName}}</p>
+      <p class="text-gray-700 text-base">
+        價格 : {{productPrice}}
+      </p>
+      <p>
+        {{productDesc}}
+      </p>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">★★★★★</span>
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">已售出100件</span>
+      <span
+        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">賣場優惠券</span>
+    </div>
+    <div class="flex justify-center">
+      <p (click)="reduce()">-</p>
+      <input type="number" formControlName="count">
+      <p (click)="add()">+</p>
+    </div>
+    <p>還剩{{productCount}}件</p>
+  </form>
+  <button
+    class="bg-red-700 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
+    (click)="addCart(product)">Add
+  </button>
+  <button
+    class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
+    (click)="buy()">Buy
+  </button>
+</div>
+

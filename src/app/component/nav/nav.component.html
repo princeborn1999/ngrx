@@ -1,6 +1,18 @@
-<header class="p-2 flex text-white bg-orange-500">
-  <h1 class="text-3xl font-bold underline">T-Shop</h1>
-  <ul class="flex justify-center ">
+<!-- sub header -->
+<div class="bg-yellow-400 ">
+ <div class="justify-center p-1 flex text-purple-800 font-bold">
+  <p>
+    Discount 70% off!
+  </p>
+  <p>
+    Click me search coupon.
+  </p>
+ </div>
+</div>
+<header class="bg-purple-800 p-2 flex shadow-lg top-0 sticky z-10">
+  <mat-icon class="text-3xl text-yellow-400">chat</mat-icon>
+  <h1 class="text-3xl font-bold underline text-yellow-400">Talk-Shop</h1>
+  <ul class="flex justify-center text-yellow-400">
     <li>
       <button mat-button><a routerLink="index">Home</a></button>
     </li>
@@ -11,28 +23,10 @@
       <button mat-button><a routerLink="/login">Login</a></button>
     </li>
     <li>
-      <button mat-button [matMenuTriggerFor]="menu"><a>Menu</a></button>
+      <button color="text-yellow-400" mat-button [matMenuTriggerFor]="menu"><a>Menu</a></button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>More</button>
+        <button  mat-menu-item>More</button>
       </mat-menu>
     </li>
   </ul>
-  <!-- SearchBar -->
-  <form>
-    <mat-form-field >
-      <mat-label>SearchBar</mat-label>
-      <input
-        class="border-gray-900"
-        type="text"
-        placeholder="Search goods by name."
-        aria-label="Number"
-        matInput
-      >
-      <mat-autocomplete>
-        <mat-option>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-
 </header>

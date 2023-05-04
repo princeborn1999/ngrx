@@ -17,6 +17,7 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
+import { ProductPageComponent } from '../feature/productPage/product-page.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -38,12 +39,14 @@ import { MatMenuModule } from '@angular/material/menu';
     HomeComponent,
     CartComponent,
     NavComponent,
-    FooterComponent],
+    FooterComponent,
+    ProductPageComponent],
   exports: [
     ProductComponent,
     HomeComponent,
     CartComponent,
     NavComponent,
-    FooterComponent],
+    FooterComponent,
+    ProductPageComponent],
 })
 export class ComponentModule {}

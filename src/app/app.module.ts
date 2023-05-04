@@ -15,12 +15,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductEffects } from './store/effect';
 import { HttpClientModule } from '@angular/common/http';
 import { productReducer } from './store/reducers';
-import { ProductPageComponent } from './feature/productPage/product-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductPageComponent
+
   ],
   imports: [
     BrowserModule,

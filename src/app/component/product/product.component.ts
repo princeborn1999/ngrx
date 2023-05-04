@@ -35,15 +35,15 @@ export class ProductComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router
     ) {
-    // this.productList$ = this.store.select(productsSelector);
+    this.productList$ = this.store.select(productsSelector);
   }
 
   ngOnInit(){
-    this.productId = this.product.productId;
-    this.productName = this.product.productName;
-    this.productPrice = this.product.productPrice;
-    this.productCount = this.product.productCount;
-    this.productDesc = this.product.productDesc;
+    this.productId = this.product.productId?this.product.productId:'';
+    this.productName = this.product.productName?this.product.productName:'';
+    this.productPrice = this.product.productPrice?this.product.productPrice:0;
+    this.productCount = this.product.productCount?this.product.productCount:0;
+    this.productDesc = this.product.productDesc?this.product.productDesc:'';
     // this.getData()
   }
 
