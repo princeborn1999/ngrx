@@ -18,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { ProductPageComponent } from '../feature/productPage/product-page.component';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   imports: [
     RouterModule,
@@ -32,6 +33,7 @@ import { ProductPageComponent } from '../feature/productPage/product-page.compon
     MatCheckboxModule,
     NgbCarouselModule,
     MatMenuModule,
+    MatCardModule,
     StoreModule.forFeature('cart', cartReducers)
   ],
   declarations: [

@@ -33,7 +33,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private store: Store<appStateInterface>,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
     ) {
     this.productList$ = this.store.select(productsSelector);
   }
