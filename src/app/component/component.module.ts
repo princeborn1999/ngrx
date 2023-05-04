@@ -21,6 +21,10 @@ import { ProductPageComponent } from '../feature/productPage/product-page.compon
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   imports: [
     RouterModule,
@@ -38,6 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatRadioModule,
     StoreModule.forFeature('cart', cartReducers)
   ],
   declarations: [
@@ -46,7 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CartComponent,
     NavComponent,
     FooterComponent,
-    ProductPageComponent],
+    ProductPageComponent,
+    LoginComponent],
   exports: [
     ProductComponent,
     HomeComponent,

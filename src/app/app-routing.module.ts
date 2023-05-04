@@ -7,7 +7,8 @@ import { ProductPageComponent } from './feature/productPage/product-page.compone
 const routes: Routes = [{path: '', redirectTo: '/index', pathMatch: 'full'},
                         {path: 'index', component: HomeComponent},
                         {path: 'product', component: ProductPageComponent},
-                        {path: 'cart', component: CartComponent}];
+                        {path: 'cart', component: CartComponent},
+                        ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
