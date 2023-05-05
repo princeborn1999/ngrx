@@ -2,17 +2,16 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { appStateInterface } from 'src/app/model/appStateInterface';
-import { productInterface } from 'src/app/model/productInterface';
-import { productsSelector } from 'src/app/store/selectors';
-import * as addCartAction from '../../store/actions';
+import * as addCartAction from '../../store/actions/cartAction';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertComponent } from '../alert/alert.component';
-import { loadProducts, loadProductsSuccess, loadProductsFailure  } from '../../store/actions';
 import { Router } from '@angular/router';
 import { Product } from 'src/interface';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { productsSelector } from 'src/app/store/selectors/prodctSelector';
+import { appStateInterface, productState } from 'src/app/store/state';
+import { product } from 'src/app/model/interface';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -29,16 +28,15 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ])
   ]
 })
-export class ProductComponent implements OnInit {
-  @Input() product!: productInterface;
+export class ProductComponent implements OnInit, product {
+  @Input() product!: productState;
   productId: string = '';
   productName: string = '';
   productPrice: number = 0;
   productCount: number = 0;
   productDesc: string = '';
 
-  productList$?: Observable<productInterface[]>;
-  dataSource: any = []
+  productList$?: Observable<productState[]>;
   form: FormGroup = new FormGroup({
     count: new FormControl('1')
   })
@@ -48,27 +46,26 @@ export class ProductComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private _snackBar: MatSnackBar
-    ) {
+  ) {
     this.productList$ = this.store.select(productsSelector);
   }
-
-  ngOnInit(){
-    this.productId = this.product.productId?this.product.productId:'';
-    this.productName = this.product.productName?this.product.productName:'';
-    this.productPrice = this.product.productPrice?this.product.productPrice:0;
-    this.productCount = this.product.productCount?this.product.productCount:0;
-    this.productDesc = this.product.productDesc?this.product.productDesc:'';
-    // this.getData()
+  getcoupon(productId: string): void {
+    throw new Error('Method not implemented.');
   }
 
-  addCart(product: productInterface) {
-    this._snackBar.open("Adding Sucess!", "close");
+  ngOnInit() {
+    this.productId = this.product.productId ? this.product.productId : '';
+    this.productName = this.product.productName ? this.product.productName : '';
+    this.productPrice = this.product.productPrice ? this.product.productPrice : 0;
+    this.productCount = this.product.productCount ? this.product.productCount : 0;
+    this.productDesc = this.product.productDesc ? this.product.productDesc : '';
+  }
+
+  addCart() {
+    this._snackBar.open('Adding Sucess!', 'close');
     const cartProduct = {
-      productId: product.productId,
-      productName: product.productName,
-      productPrice: +product.productPrice,
-      productCount: this.form.value.count,
-      productDesc: product.productDesc
+      ...this.product,
+      productCount: this.form.value.count
     }
 
     this.store.dispatch(
@@ -80,10 +77,8 @@ export class ProductComponent implements OnInit {
     //   console.log(`Dialog result: ${result}`);
     // });
   }
-  // getData(): void{
-  //   this.store.dispatch(loadProducts());
-  // }
-  buy(){
+
+  buy() {
     this.router.navigate(['./cart'])
   }
 
@@ -98,7 +93,7 @@ export class ProductComponent implements OnInit {
 
   reduce() {
     const nowCount = +this.form.value.count;
-    if(nowCount <= 1) return;
+    if (nowCount <= 1) return;
     this.form.get('count')?.setValue(nowCount - 1);
   }
 }

@@ -1,28 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
-import * as addCartAction from './actions'
-import * as ProductActions from './actions'
-import { appStateInterface } from '../model/appStateInterface';
-import { productInterface } from '../model/productInterface';
+import * as addCartAction from '../actions/cartAction'
+import * as ProductActions from '../actions/cartAction'
 import { productList } from 'src/assets/mock/mockProducts';
+import { appStateInterface } from '../state';
 
 
 export const initialState: appStateInterface = {
-  // products: productList,
   products: [],
   cartProducts: []
 };
-export const productReducer = createReducer(
-  initialState,
-  on(ProductActions.loadProductsSuccess, (state, { products }) =>{
-    console.log('Products updated:', products);
-    return {
-      ...state,
-      products
-    };
-  })
-);
 
-export const cartReducers = createReducer(
+export const cartReducer = createReducer(
   initialState,
   on(addCartAction.addCart, (state, action) => {
     const hasSameProduct = state.cartProducts.length &&
@@ -63,7 +51,7 @@ export const cartReducers = createReducer(
       cartProducts: [...changeCartCounts()]
     }
   }),
-  on(addCartAction.reduce, (state, action) => {
+  on(addCartAction.minus, (state, action) => {
     const changeCartCounts = () => {
       return state.cartProducts.map(product => {
         if (product.productId === action.cartProduct.productId)

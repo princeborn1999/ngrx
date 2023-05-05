@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { ProductService } from '../service/product.service';
-import * as ProductActions from './actions';
+import { ProductService } from '../../service/product.service';
+import * as ProductActions from '../actions/productAction';
 @Injectable()
 export class ProductEffects {
   loadProducts$ = createEffect(() => {

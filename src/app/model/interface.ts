@@ -5,7 +5,7 @@ export interface product {
   productCount: number;
   productDesc: string;
 
-  addCart(productId: string, count: string): void;
+  addCart(): void;
   getcoupon(productId: string): void;
 }
 

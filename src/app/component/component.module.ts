@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { cartReducers } from '../store/reducers';
+
 import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
-import { CartComponent } from './cart/cart.component';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -21,7 +20,7 @@ import { ProductPageComponent } from '../feature/productPage/product-page.compon
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
@@ -29,6 +28,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { LoginComponent } from '../feature/loginPage/login.component';
+import { CartComponent } from '../feature/cartPage/cart.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -53,7 +54,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatListModule,
     MatSidenavModule,
     MatExpansionModule,
-    StoreModule.forFeature('cart', cartReducers)
+    // StoreModule.forFeature('cart', cartReducers)
   ],
   declarations: [
     ProductComponent,

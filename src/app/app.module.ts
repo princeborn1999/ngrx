@@ -5,17 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './component/product/product.component';
 import { HomeComponent } from './component/home/home.component';
-import { CartComponent } from './component/cart/cart.component';
+import { CartComponent } from './feature/cartPage/cart.component';
 import { StoreModule } from '@ngrx/store';
-import { cartReducers } from './store/reducers';
 import { NavComponent } from './component/nav/nav.component';
 import { ComponentModule } from './component/component.module';
 import { EffectsModule } from '@ngrx/effects';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ProductEffects } from './store/effect';
+import { ProductEffects } from './store/effects/productEffect';
 import { HttpClientModule } from '@angular/common/http';
-import { productReducer } from './store/reducers';
+import { productReducer } from './store/reducers/productReducer';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { reducers } from './store/reducers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ComponentModule,
     HttpClientModule,
     MatDialogModule,
-    StoreModule.forRoot({ products: productReducer }),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ProductEffects]),
     NgbModule,
   ],

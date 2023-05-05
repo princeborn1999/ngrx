@@ -3,10 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { appStateInterface } from 'src/app/model/appStateInterface';
-import { productInterface } from 'src/app/model/productInterface';
-import { loadProducts } from 'src/app/store/actions';
-import { productsSelector } from 'src/app/store/selectors';
+import { loadProducts } from 'src/app/store/actions/productAction';
+import { productsSelector } from 'src/app/store/selectors/prodctSelector';
+import { appStateInterface, productState } from 'src/app/store/state';
 import { Product } from 'src/interface';
 
 @Component({
@@ -15,7 +14,7 @@ import { Product } from 'src/interface';
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements Product, OnInit {
-  productList$?: Observable<productInterface[]>;
+  productList$?: Observable<productState[]>;
 
   constructor(
     private store: Store<appStateInterface>,

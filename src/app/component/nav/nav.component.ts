@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { appStateInterface } from 'src/app/model/appStateInterface';
-import { productInterface } from 'src/app/model/productInterface';
-import { cartProductsSelector } from 'src/app/store/selectors';
+import { cartProductsSelector } from 'src/app/store/selectors/cartSelectors';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from 'src/app/feature/loginPage/login.component';
+import { appStateInterface, productState } from 'src/app/store/state';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -14,7 +14,7 @@ import { LoginComponent } from '../login/login.component';
 })
 export class NavComponent {
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
-  cartProduct$?: Observable<productInterface[]>;
+  cartProduct$?: Observable<productState[]>;
   totalProduct?: number;
 
   constructor(
