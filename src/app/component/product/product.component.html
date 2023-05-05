@@ -1,37 +1,29 @@
-<mat-card class="shadow-sm p-2">
+<mat-card class="shadow-sm p-2" matRipple>
   <mat-card-header>
     <mat-card-title class="font-bold text-xl mb-2">{{productName}}</mat-card-title>
   </mat-card-header>
   <img src="../../../assets/img/4945247381306_400.webp" alt="">
   <mat-card-content>
     <form [formGroup]="form">
-      <div class="px-6 py-4">
-        <p class="text-gray-700 text-base">
-          價格 : {{productPrice}}
-        </p>
-        <p>
-          {{productDesc}}
-        </p>
-      </div>
-      <div class="px-6 pt-2 pb-2">
-        <span
-          class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">★★★★★</span>
-        <span
-          class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">已售出100件</span>
-        <span
-          class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">賣場優惠券</span>
-      </div>
+      <mat-list>
+        <mat-list-item>價格 : {{productPrice}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>{{productDesc}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>還剩{{productCount}}件</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>賣場優惠券</mat-list-item>
+      </mat-list>
       <div class="flex justify-center">
         <p (click)="reduce()">-</p>
         <input type="number" formControlName="count">
         <p (click)="add()">+</p>
       </div>
-      <p>還剩{{productCount}}件</p>
     </form>
   </mat-card-content>
   <mat-card-actions>
     <div class="flex">
-      <button 
+      <button
         class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded m-5"
         (click)="addCart(product)">
         <mat-icon>favorite</mat-icon>

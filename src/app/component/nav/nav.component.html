@@ -1,32 +1,51 @@
-<!-- sub header -->
-<div class="bg-yellow-400 ">
- <div class="justify-center p-1 flex text-purple-800 font-bold">
-  <p>
-    Discount 70% off!
-  </p>
-  <p>
-    Click me search coupon.
-  </p>
- </div>
-</div>
-<header class="bg-purple-800 p-2 flex shadow-lg top-0 sticky z-10">
-  <mat-icon class="text-3xl text-yellow-400">chat</mat-icon>
-  <h1 class="text-3xl font-bold underline text-yellow-400">Talk-Shop</h1>
-  <ul class="flex justify-center text-yellow-400">
-    <li>
-      <button mat-button><a routerLink="index">Home</a></button>
-    </li>
-    <li>
-      <button mat-button><a routerLink="/cart">Cart</a></button>
-    </li>
-    <li>
-      <button color="text-yellow-400" mat-button (click)="popLogin()"><a>Login</a></button>
-    </li>
-    <li>
-      <button color="text-yellow-400" mat-button [matMenuTriggerFor]="menu"><a>More</a></button>
-      <mat-menu #menu="matMenu">
-        <button  mat-menu-item>Contributor</button>
-      </mat-menu>
-    </li>
-  </ul>
-</header>
+<mat-drawer-container [hasBackdrop]="true">
+  <mat-drawer #drawer mode="over" class="bg-purple-500 p-3">
+    <h2 class="text-white">User Info</h2>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="text-purple-800">
+              Personal data
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Account: 9527</p>
+          <p>Email: 9527@gmail.com</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-drawer>
+  <!-- sub header -->
+  <div class="bg-yellow-400 ">
+  <div class="justify-center p-1 flex text-purple-800 font-bold">
+    <p>
+      Discount 70% off!
+    </p>
+    <p>
+      Click me search coupon.
+    </p>
+  </div>
+  </div>
+  <header class="bg-purple-800 p-2 flex shadow-lg top-0 sticky z-10">
+    <mat-icon class="text-3xl text-yellow-400">chat</mat-icon>
+    <h1 class="text-3xl font-bold underline text-yellow-400">Talk-Shop</h1>
+    <ul class="flex justify-center text-yellow-400">
+      <li>
+        <button mat-button><a routerLink="index">Home</a></button>
+      </li>
+      <li>
+        <button mat-button><a routerLink="/cart">Cart</a></button>
+      </li>
+      <li>
+        <button color="text-yellow-400" mat-button (click)="popLogin()"><a>Login</a></button>
+      </li>
+      <li>
+        <button color="text-yellow-400" mat-button [matMenuTriggerFor]="menu"><a>More</a></button>
+        <mat-menu #menu="matMenu">
+          <button  mat-menu-item>Contributor</button>
+        </mat-menu>
+      </li>
+      <li>
+        <button color="text-yellow-400" (click)="drawer.toggle()"><a>UserInfo</a></button>
+      </li>
+    </ul>
+  </header>
+</mat-drawer-container>

@@ -25,6 +25,10 @@ import { LoginComponent } from './login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatRippleModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   imports: [
     RouterModule,
@@ -45,6 +49,10 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatTabsModule,
     MatRadioModule,
+    MatRippleModule,
+    MatListModule,
+    MatSidenavModule,
+    MatExpansionModule,
     StoreModule.forFeature('cart', cartReducers)
   ],
   declarations: [
