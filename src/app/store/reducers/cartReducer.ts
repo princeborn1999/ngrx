@@ -30,8 +30,8 @@ export const cartReducer = createReducer(
     return {
       ...state,
       cartProducts: hasSameProduct ?
-                    [...changeCartCounts()] :
-                    [...state.cartProducts, action.cartProduct]
+        [...changeCartCounts()] :
+        [...state.cartProducts, action.cartProduct]
     }
   }),
   on(addCartAction.plus, (state, action) => {
@@ -40,7 +40,7 @@ export const cartReducer = createReducer(
         if (product.productId === action.cartProduct.productId)
           return {
             ...product,
-            productCount: action.cartProduct.productCount + 1
+            productCount: action.cartProduct.productCount + 1,
           }
         return { ...product };
       });
@@ -68,6 +68,12 @@ export const cartReducer = createReducer(
       cartProducts: [...changeCartCounts()]
     }
   }),
+  on(addCartAction.goCheckout, (state, action) => {
+    return {
+      ...state,
+      cartProducts: action.cartProducts
+    }
+  }),
   on(addCartAction.buy, (state, action) => {
     const buyListIds = action.products.map(list => list.productId);
     const products = () => {
@@ -80,9 +86,16 @@ export const cartReducer = createReducer(
         return product;
       })
     }
+
+    const cartProducts = () => {
+      return state.products.filter(product =>
+        action.products.find(buyedProducts =>
+          buyedProducts.productId !== product.productId))
+    }
+
     return {
-      ...state,
-      products: products()
+      products: products(),
+      cartProducts: cartProducts()
     }
   })
 )

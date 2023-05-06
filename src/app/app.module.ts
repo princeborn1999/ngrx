@@ -16,10 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { productReducer } from './store/reducers/productReducer';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { reducers } from './store/reducers';
+import { CheckoutComponent } from './feature/checkoutPage/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
-
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,34 +1,37 @@
-<div class="shadow-lg m-5 p-5">
-  <table>
-    <tr>
-      <td><input type="checkbox"></td>
-      <td>商品</td>
-      <td>單價</td>
-      <td>數量</td>
-      <td>總計</td>
-    </tr>
-    <tr *ngFor="let product of productList,let i = index">
-      <td><input type="checkbox" (change)="check(product,$event)"></td>
-      <td>
-        <div>
-          <img src="" alt="">
-        </div>
-        <h2>{{product.productName}}</h2>
-      </td>
-      <td>{{product.productPrice}}</td>
-      <td>
-        <p (click)="add(i)">+</p>
-        <input type="number" value={{product.productCount}}>
-        <p (click)="reduce(i, product.productCount)">-</p>
-      </td>
-      <td>{{product.productCount * product.productPrice}}</td>
-    </tr>
-  </table>
+<form [formGroup]="form">
+    <table class="w-full" formArrayName="produts">
+      <tr class="flex justify-between shadow-lg m-2 p-3">
+        <td class="flex-none"><input type="checkbox" (change)="selectAll($event)" [checked]="checkedList.length >= 1"></td>
+        <td class="basis-1/2">商品</td>
+        <td class="basis-1/4">單價</td>
+        <td class="basis-1/4">數量</td>
+        <td class="basis-1/4">總計</td>
+      </tr>
+      <ng-container *ngFor="let product of produts.controls,let i = index">
+        <tr [formGroupName]="i" class="flex justify-between shadow-lg m-2 p-3">
+          <td class="flex-none"><input type="checkbox" formControlName="checked" (change)="select(productList[i],i)">
+          </td>
+          <td class="basis-1/2">
+            <div>
+              <img src="" alt="">
+            </div>
+            <h2>{{productList[i].productName}}</h2>
+          </td>
+          <td class="basis-1/4">{{productList[i].productPrice}}</td>
+          <td class="flex basis-1/4">
+            <p class="border-zinc-950 w-3" (click)="add(i)">+</p>
+            <input class="border-zinc-950 w-5" type="number" value={{productList[i].productCount}}>
+            <p class="border-zinc-950 w-3" (click)="minus(i, productList[i].productCount)">-</p>
+          </td>
+          <td class="basis-1/4">{{productList[i].productCount * productList[i].productPrice}}</td>
+        </tr>
+      </ng-container>
+    </table>
 
-<h2>總金額(個商品)</h2>
-<h2>${{feeSum()}}</h2>
-<button
-  class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
-  [disabled]="!checkedList.length" (click)="buy()">去買單
-</button>
-</div>
+    <h2>總金額(個商品)</h2>
+    <h2>${{feeSum()}}</h2>
+    <button
+      class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
+      [disabled]="!checkedList.length" (click)="buy()">去買單
+    </button>
+</form>

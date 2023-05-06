@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-
 import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
@@ -20,7 +18,6 @@ import { ProductPageComponent } from '../feature/productPage/product-page.compon
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
@@ -54,7 +51,6 @@ import { CartComponent } from '../feature/cartPage/cart.component';
     MatListModule,
     MatSidenavModule,
     MatExpansionModule,
-    // StoreModule.forFeature('cart', cartReducers)
   ],
   declarations: [
     ProductComponent,
