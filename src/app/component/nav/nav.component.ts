@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { cartProductsSelector } from 'src/app/store/selectors/cartSelectors';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/feature/loginPage/login.component';
 import { appStateInterface, productState } from 'src/app/store/state';
+import { cartProductsSelector } from 'src/app/store/selectors/prodctSelector';
 
 @Component({
   selector: 'app-nav',

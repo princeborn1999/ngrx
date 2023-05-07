@@ -1,6 +1,7 @@
 export interface appStateInterface {
   products: productState[];
-  cartProducts: productState[]
+  cartProducts: productState[],
+  checkoutProucts: productState[],
 }
 
 export interface productState {

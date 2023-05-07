@@ -1,5 +1,5 @@
 <div class="shadow-lg m-5 p-5">
-  <table formArrayName="produts">
+  <table>
     <tr>
       <td>商品</td>
       <td>單價</td>
@@ -23,10 +23,10 @@
     </ng-container>
   </table>
 
-  <h2>總金額(個商品)</h2>
+  <h3>總金額(個商品)</h3>
   <!-- <h2>${{feeSum()}}</h2> -->
-  <div
+  <button
     class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-5"
     (click)="buy()">去買單
-  </div>
+  </button>
 </div>

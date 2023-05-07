@@ -5,3 +5,13 @@ export const productsSelector = createSelector(
   selectProductState,
   (state) => state.products
 )
+
+export const cartProductsSelector = createSelector(
+  selectProductState,
+  (state) => state.cartProducts
+)
+
+export const checkoutProductsSelector = createSelector(
+  selectProductState,
+  (state) => state.checkoutProucts
+)

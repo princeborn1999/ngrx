@@ -26,7 +26,6 @@ export class ProductPageComponent implements Product, OnInit {
 
   ngOnInit() {
     this.getData();
-    this.productList$?.subscribe(res => console.log('res', res))
   }
 
   getData(): void {

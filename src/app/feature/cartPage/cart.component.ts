@@ -4,8 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, concatMap, of } from 'rxjs';
 import { cart } from 'src/app/model/interface';
-import { cartProductsSelector } from 'src/app/store/selectors/cartSelectors';
-import { productsSelector } from 'src/app/store/selectors/prodctSelector';
+import { cartProductsSelector, productsSelector } from 'src/app/store/selectors/prodctSelector';
 import { appStateInterface, productState } from 'src/app/store/state';
 import * as addCartAction from '../../store/actions/cartAction';
 import { coupon } from './../../model/interface';
@@ -64,7 +63,6 @@ export class CartComponent implements OnInit, cart {
   }
 
   buy() {
-    this.store.dispatch(addCartAction.buy({ products: this.checkedList }));
     this.store.dispatch(addCartAction.goCheckout({ cartProducts: this.checkedList }));
     this.router.navigate(['./checkout']);
   }
