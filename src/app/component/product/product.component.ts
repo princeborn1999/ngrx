@@ -28,11 +28,13 @@ import { product } from 'src/app/model/interface';
 })
 export class ProductComponent implements OnInit, product {
   @Input() product!: productState;
+  @Input() imgId: number = 6;
   productId: string = '';
   productName: string = '';
   productPrice: number = 0;
   productCount: number = 0;
   productDesc: string = '';
+
 
   productList$?: Observable<productState[]>;
   form: FormGroup = new FormGroup({
@@ -93,5 +95,9 @@ export class ProductComponent implements OnInit, product {
     const nowCount = +this.form.value.count;
     if (nowCount <= 1) return;
     this.form.get('count')?.setValue(nowCount - 1);
+  }
+
+  setRandomId() {
+    return Math.ceil(Math.random()+1);
   }
 }

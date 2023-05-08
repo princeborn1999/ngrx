@@ -5,6 +5,7 @@ import { appStateInterface, productState } from 'src/app/store/state';
 import { Store } from '@ngrx/store';
 import { buy } from 'src/app/store/actions/cartAction';
 import { checkoutProductsSelector } from 'src/app/store/selectors/prodctSelector';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-checkout',
@@ -19,6 +20,7 @@ export class CheckoutComponent implements OnInit {
     private store: Store<appStateInterface>,
     private router: Router,
     private route: ActivatedRoute,
+    private productService: ProductService
   ) {
     this.buyProduct$ = this.store.select(checkoutProductsSelector);
   }
@@ -28,8 +30,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   buy() {
-    this.router.navigate(['..']);
-    //TODO json-server 要put 改變DB值
+    this.productService.updateProducts(this.buyProducts).subscribe();
     this.store.dispatch(buy({ 'products': this.buyProducts }));
+    this.router.navigate(['..']);
   }
 }
