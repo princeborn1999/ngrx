@@ -46,7 +46,7 @@ export const productReducer = createReducer(
         if (product.productId === action.cartProduct.productId)
           return {
             ...product,
-            productCount: action.cartProduct.productCount + 1,
+            productCount: +action.cartProduct.productCount + 1,
           }
         return { ...product };
       });
@@ -63,7 +63,7 @@ export const productReducer = createReducer(
         if (product.productId === action.cartProduct.productId)
           return {
             ...product,
-            productCount: action.cartProduct.productCount - 1
+            productCount: +action.cartProduct.productCount - 1
           };
         return { ...product };
       });
@@ -72,6 +72,16 @@ export const productReducer = createReducer(
     return {
       ...state,
       cartProducts: changeCartCounts()
+    }
+  }),
+  on(addCartAction.deleteProdct, (state, action) => {
+    const cartProducts = state.cartProducts.filter(product =>
+      product.productId !== action.cartProduct.productId
+    )
+
+    return {
+      ...state,
+      cartProducts: cartProducts
     }
   }),
   on(addCartAction.goCheckout, (state, action) => {

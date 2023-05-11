@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 interface Action {
@@ -18,4 +19,9 @@ export class AppComponent implements OnInit {
 
   }
 
+  constructor(
+    public router: Router,
+  ){
+
+  }
 }

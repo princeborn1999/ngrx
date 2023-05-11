@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ProductComponent } from './product/product.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from '../feature/home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -18,7 +18,7 @@ import { ProductPageComponent } from '../feature/productPage/product-page.compon
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatRippleModule } from '@angular/material/core';
@@ -27,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LoginComponent } from '../feature/loginPage/login.component';
 import { CartComponent } from '../feature/cartPage/cart.component';
+
 @NgModule({
   imports: [
     RouterModule,
@@ -67,5 +68,11 @@ import { CartComponent } from '../feature/cartPage/cart.component';
     NavComponent,
     FooterComponent,
     ProductPageComponent],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+  ]
 })
-export class ComponentModule {}
+export class ComponentModule { }

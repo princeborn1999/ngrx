@@ -6,5 +6,6 @@ export const plus = createAction('[plus]',props<{cartProduct: productState}>())
 export const minus = createAction('[minus]',props<{cartProduct: productState}>())
 export const goCheckout = createAction('[goCheckout]',props<{cartProducts: productState[]}>())
 export const buy = createAction('[buy]',props<{products: productState[]}>())
+export const deleteProdct = createAction('[deleteProdct]',props<{cartProduct: productState}>())
 
 

@@ -3,11 +3,13 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, concatMap, of } from 'rxjs';
-import { cart } from 'src/app/model/interface';
+import { cart, product } from 'src/app/model/interface';
 import { cartProductsSelector, productsSelector } from 'src/app/store/selectors/prodctSelector';
 import { appStateInterface, productState } from 'src/app/store/state';
 import * as addCartAction from '../../store/actions/cartAction';
 import { coupon } from './../../model/interface';
+import { AlertComponent } from 'src/app/component/alert/alert.component';
+
 
 
 @Component({
@@ -34,8 +36,7 @@ export class CartComponent implements OnInit, cart {
     private store: Store<appStateInterface>,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
-  ) {
+    private fb: FormBuilder) {
     this.cartProduct$ = this.store.select(cartProductsSelector);
     this.productList$ = this.store.select(productsSelector);
     this.form = this.fb.group({
@@ -100,15 +101,16 @@ export class CartComponent implements OnInit, cart {
   }
 
   add(index: number) {
-    this.store.dispatch(
-      addCartAction.plus({ cartProduct: this.productList[index] })
-    )
+    this.store.dispatch(addCartAction.plus({ cartProduct: this.productList[index] }))
   }
 
   minus(index: number, count: number) {
     if (count <= 1) return;
-    this.store.dispatch(
-      addCartAction.minus({ cartProduct: this.productList[index] })
-    )
+    this.store.dispatch(addCartAction.minus({ cartProduct: this.productList[index] }))
+  }
+
+  delete(product: productState, index: number) {
+    this.produts.removeAt(index);
+    this.store.dispatch(addCartAction.deleteProdct({ cartProduct: product }))
   }
 }
