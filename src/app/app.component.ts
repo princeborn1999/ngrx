@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-
+declare var myLibrary: any;
 interface Action {
   type: string;
   payload?: any
@@ -16,7 +16,7 @@ interface Action {
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-
+    myLibrary
   }
 
   constructor(
