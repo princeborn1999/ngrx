@@ -19,8 +19,7 @@ import { reducers } from './store/reducers';
 import { CheckoutComponent } from './feature/checkoutPage/checkout.component';
 @NgModule({
   declarations: [
-    AppComponent,
-    CheckoutComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

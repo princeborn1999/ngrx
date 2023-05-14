@@ -27,6 +27,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LoginComponent } from '../feature/loginPage/login.component';
 import { CartComponent } from '../feature/cartPage/cart.component';
+import { CouponComponent } from './coupon/coupon.component';
+import { CheckoutComponent } from '../feature/checkoutPage/checkout.component';
+
 
 @NgModule({
   imports: [
@@ -51,7 +54,7 @@ import { CartComponent } from '../feature/cartPage/cart.component';
     MatRippleModule,
     MatListModule,
     MatSidenavModule,
-    MatExpansionModule,
+    MatExpansionModule
   ],
   declarations: [
     ProductComponent,
@@ -60,14 +63,20 @@ import { CartComponent } from '../feature/cartPage/cart.component';
     NavComponent,
     FooterComponent,
     ProductPageComponent,
-    LoginComponent],
+    LoginComponent,
+    CouponComponent,
+    CheckoutComponent
+  ],
   exports: [
     ProductComponent,
     HomeComponent,
     CartComponent,
     NavComponent,
     FooterComponent,
-    ProductPageComponent],
+    ProductPageComponent,
+    CouponComponent,
+    CheckoutComponent
+  ],
   providers: [
     {
       provide: MatDialogRef,

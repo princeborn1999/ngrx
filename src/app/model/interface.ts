@@ -20,7 +20,10 @@ export interface cart {
 export interface coupon {
   couponId: string;
   couponType: string;
-  discount: number; //折數 例0.9 0.8
-  priceOff: number; //單一品項折價 例10,20,30
-  deliveryFree: boolean;
+  couponName: string;
+  couponDescription: string;
+  limit: number; //條件
+  discount?: number; //折數 例0.9 0.8
+  priceOff?: number; //單一品項折價 例10,20,30
+  deliveryFree?: boolean;
 }

@@ -15,6 +15,7 @@ import { ProductService } from 'src/app/service/product.service';
 export class CheckoutComponent implements OnInit {
   buyProduct$?: Observable<productState[]>;
   buyProducts: productState[] = [];
+  panelOpenState = false;
 
   constructor(
     private store: Store<appStateInterface>,

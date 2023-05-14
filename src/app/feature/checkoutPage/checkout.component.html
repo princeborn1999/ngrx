@@ -22,6 +22,24 @@
   </ng-container>
 </table>
 
+
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>card_giftcard</mat-icon>
+        賣場優惠券
+      </mat-panel-title>
+      <mat-panel-description>
+        選擇優惠券或輸入代碼
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>運費抵用券</p>
+    <p>折扣</p>
+    <app-coupon></app-coupon>
+  </mat-expansion-panel>
+</mat-accordion>
+
 <div class="flex flex-col items-end mt-5">
   <h4>總金額(個商品)</h4>
   <!-- <h4>${{feeSum()}}</h4> -->

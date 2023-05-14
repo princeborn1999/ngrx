@@ -82,10 +82,6 @@ export class ProductComponent implements OnInit, product {
     this.router.navigate(['./cart'])
   }
 
-  getCoupon(productId: string) {
-    console.log('getCoupon')
-  }
-
   add() {
     const nowCount = +this.form.value.count;
     this.form.get('count')?.setValue(nowCount + 1);

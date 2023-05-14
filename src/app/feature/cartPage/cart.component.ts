@@ -22,9 +22,12 @@ export class CartComponent implements OnInit, cart {
   coupon: coupon = {
     couponId: '',
     couponType: '',
+    couponName: '',
+    couponDescription: '',
+    limit: 0,
     discount: 0, //折數 例0.9 0.8
     priceOff: 0, //單一品項折價 例10,20,30
-    deliveryFree: true
+    deliveryFree: true,
   }
   form: FormGroup;
   productList: productState[] = [];

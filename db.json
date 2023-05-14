@@ -63,6 +63,32 @@
       "productDesc": "我是商品H我是商品H我是商品H"
     }
   ],
+  "coupons": [
+    {
+      "couponId": "1",
+      "couponType": "deliveryFree",
+      "couponName": "$1,000免運券",
+      "couponDescription": "低消$1,000",
+      "limit": 1000,
+      "deliveryFree": true
+    },
+    {
+      "couponId": "2",
+      "couponType": "discount",
+      "couponName": "任選3件85折",
+      "couponDescription": "低消3件商品",
+      "limit": 3,
+      "discount": 0.85
+    },
+    {
+      "couponId": "3",
+      "couponType": "priceOff",
+      "couponName": "滿$1000折$150",
+      "couponDescription": "低消$1,000",
+      "limit": 150,
+      "priceOff": 150
+    }
+  ],
   "couple": [
     {
       "id": "12345",
