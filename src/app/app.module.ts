@@ -1,22 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './component/product/product.component';
-import { HomeComponent } from './feature/home/home.component';
-import { CartComponent } from './feature/cartPage/cart.component';
-import { StoreModule } from '@ngrx/store';
-import { NavComponent } from './component/nav/nav.component';
 import { ComponentModule } from './component/component.module';
-import { EffectsModule } from '@ngrx/effects';
-import { MatDialogModule } from '@angular/material/dialog';
+import { CouponEffects } from './store/effects/couponEffect';
 import { ProductEffects } from './store/effects/productEffect';
-import { HttpClientModule } from '@angular/common/http';
-import { productReducer } from './store/reducers/productReducer';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { reducers } from './store/reducers';
-import { CheckoutComponent } from './feature/checkoutPage/checkout.component';
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +22,7 @@ import { CheckoutComponent } from './feature/checkoutPage/checkout.component';
     HttpClientModule,
     MatDialogModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ProductEffects]),
+    EffectsModule.forRoot([ProductEffects, CouponEffects]),
     NgbModule,
   ],
   providers: [],

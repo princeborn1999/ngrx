@@ -1,4 +1,4 @@
-<table table class="w-full shadow-lg">
+<table table class="w-full shadow-lg mb-3">
   <tr class="flex justify-between p-3 border-b-2 border-slate-800">
     <td class="basis-1/2 text-lg">訂單商品</td>
     <td class="basis-1/4 text-center">單價</td>
@@ -22,27 +22,38 @@
   </ng-container>
 </table>
 
-
-<mat-accordion>
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <mat-icon>card_giftcard</mat-icon>
-        賣場優惠券
-      </mat-panel-title>
-      <mat-panel-description>
-        選擇優惠券或輸入代碼
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>運費抵用券</p>
-    <p>折扣</p>
-    <app-coupon></app-coupon>
-  </mat-expansion-panel>
-</mat-accordion>
+<form [formGroup]="form">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header class="p-3">
+        <mat-panel-title class="text-lg">
+          賣場優惠券
+        </mat-panel-title>
+        <mat-panel-description>
+          選擇優惠券或輸入代碼
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-container *ngIf="coupons$ | async as coupons">
+        <p>運費抵用券</p>
+        <ng-container *ngFor="let coupon of coupons">
+          <input (change)="changeFeeSum(coupon)" *ngIf="coupon.couponType === 'deliveryFree'" type="radio" formControlName="isDeliveryFree" value="true">
+          <app-coupon *ngIf="coupon.couponType === 'deliveryFree'" [couponData]="coupon"></app-coupon>
+        </ng-container>
+        <p>折扣</p>
+        <ng-container *ngFor="let coupon of coupons">
+          <input (change)="changeFeeSum(coupon)" *ngIf="coupon.couponType !== 'deliveryFree'" type="radio" formControlName="discount" value={{coupon.couponType}}
+          [disabled]="achieve(coupon)">
+          <app-coupon *ngIf="coupon.couponType !== 'deliveryFree'" [couponData]="coupon"></app-coupon>
+        </ng-container>
+      </ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
 
 <div class="flex flex-col items-end mt-5">
-  <h4>總金額(個商品)</h4>
-  <!-- <h4>${{feeSum()}}</h4> -->
+  <h5>運費${{deliveryFee}}</h5>
+  <h4>總金額({{productCounts}}個商品)</h4>
+  <h4>${{feeSum}}</h4>
   <button
     class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
     (click)="buy()">結帳

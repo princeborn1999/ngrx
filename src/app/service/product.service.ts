@@ -4,13 +4,15 @@ import { Store } from '@ngrx/store';
 import { Observable, filter, from, map, switchMap } from 'rxjs';
 import { productsSelector } from '../store/selectors/prodctSelector';
 import { appStateInterface, productState } from '../store/state';
+import { coupon } from '../model/interface';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3000/products';
+  productApiUrl = 'http://localhost:3000/products';
+  couponApiUrl = 'http://localhost:3000/coupons';
   products$!: Observable<productState[]>;
 
   constructor(
@@ -21,7 +23,7 @@ export class ProductService {
   }
 
   getProducts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.productApiUrl);
   }
 
   updateProducts(buyProducts: productState[]): Observable<any[]> {
@@ -29,13 +31,17 @@ export class ProductService {
 
     return this.products$.pipe(
       switchMap(products => from(products).pipe(
-        filter(product=> buyListIds.indexOf(product.productId) !== -1)
+        filter(product => buyListIds.indexOf(product.productId) !== -1)
       )),
       map(product => ({
         ...product,
         productCount: product.productCount - buyProducts[buyListIds.indexOf(product.productId)].productCount
       })),
-      switchMap(product => this.http.put<any[]>(`${this.apiUrl}/${product.productId}`, product))
+      switchMap(product => this.http.put<any[]>(`${this.productApiUrl}/${product.productId}`, product))
     )
+  }
+
+  getCoupons(): Observable<coupon[]> {
+    return this.http.get<coupon[]>(this.couponApiUrl)
   }
 }

@@ -1,14 +1,13 @@
 .coupon {
   width: 300px;
   height: 100px;
-  background-color: bisque;
+  background-color: rgb(255, 243, 228);
   position: relative;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .icon {
-  content: '';
   color: white;
   width: 100px;
   height: 100px;
@@ -16,6 +15,16 @@
   right: 0;
   top: 0;
   background-color: rgb(255, 39, 39);
+}
+
+.icon-blue {
+  color: white;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: rgb(39, 133, 255);
 }
 
 .coupon h5 {
