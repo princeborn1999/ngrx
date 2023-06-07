@@ -88,6 +88,8 @@ export class CheckoutComponent implements OnInit {
 
   //TODO not yet
   achieve(coupon: coupon) {
+    console.log('coupon.limit',coupon.limit)
+    console.log('this.initFeeSum',this.initFeeSum)
     switch (coupon.couponType) {
       case 'deliveryFree':
         console.log(this.initFeeSum < coupon.limit)

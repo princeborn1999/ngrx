@@ -36,13 +36,13 @@
       <ng-container *ngIf="coupons$ | async as coupons">
         <p>運費抵用券</p>
         <ng-container *ngFor="let coupon of coupons">
-          <input (change)="changeFeeSum(coupon)" *ngIf="coupon.couponType === 'deliveryFree'" type="radio" formControlName="isDeliveryFree" value="true">
+          <input (change)="changeFeeSum(coupon)" *ngIf="coupon.couponType === 'deliveryFree'" type="radio" formControlName="isDeliveryFree" value="true" [attr.disabled]="achieve(coupon)">
           <app-coupon *ngIf="coupon.couponType === 'deliveryFree'" [couponData]="coupon"></app-coupon>
         </ng-container>
         <p>折扣</p>
         <ng-container *ngFor="let coupon of coupons">
           <input (change)="changeFeeSum(coupon)" *ngIf="coupon.couponType !== 'deliveryFree'" type="radio" formControlName="discount" value={{coupon.couponType}}
-          [disabled]="achieve(coupon)">
+          [attr.disabled]="achieve(coupon)">
           <app-coupon *ngIf="coupon.couponType !== 'deliveryFree'" [couponData]="coupon"></app-coupon>
         </ng-container>
       </ng-container>
