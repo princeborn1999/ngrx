@@ -29,6 +29,7 @@ import { LoginComponent } from '../feature/loginPage/login.component';
 import { CartComponent } from '../feature/cartPage/cart.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { CheckoutComponent } from '../feature/checkoutPage/checkout.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { CheckoutComponent } from '../feature/checkoutPage/checkout.component';
     ProductPageComponent,
     LoginComponent,
     CouponComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    TestComponent
   ],
   exports: [
     ProductComponent,
