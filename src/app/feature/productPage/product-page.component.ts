@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { loadProducts } from 'src/app/store/actions/productAction';
-import { productsSelector } from 'src/app/store/selectors/prodctSelector';
+import { loadProducts } from '../../store/actions/productAction';
+import { productsSelector } from '../../store/selectors/prodctSelector';
 import { appStateInterface, productState } from 'src/app/store/state';
 import { Product } from 'src/interface';
 

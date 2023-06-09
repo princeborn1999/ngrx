@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, concatMap, of } from 'rxjs';
 import { cart, product } from 'src/app/model/interface';
-import { cartProductsSelector, productsSelector } from 'src/app/store/selectors/prodctSelector';
+import { cartProductsSelector, productsSelector } from '../../store/selectors/prodctSelector';
 import { appStateInterface, productState } from 'src/app/store/state';
 import * as addCartAction from '../../store/actions/cartAction';
 import { coupon } from './../../model/interface';

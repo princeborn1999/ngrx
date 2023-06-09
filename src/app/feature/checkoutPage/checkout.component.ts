@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { appStateInterface, productState } from 'src/app/store/state';
 import { Store } from '@ngrx/store';
-import { buy } from 'src/app/store/actions/cartAction';
-import { checkoutProductsSelector } from 'src/app/store/selectors/prodctSelector';
-import { ProductService } from 'src/app/service/product.service';
+import { buy } from '../../store/actions/cartAction';
+import { checkoutProductsSelector } from '../../store/selectors/prodctSelector';
+import { ProductService } from '../../service/product.service';
 import { coupon } from 'src/app/model/interface';
 import { couponsSelector } from 'src/app/store/selectors/couponSelector';
 import { loadCoupons } from 'src/app/store/actions/couponAction';
@@ -52,9 +52,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   buy() {
-    this.productService.updateProducts(this.buyProducts).subscribe();
-    this.store.dispatch(buy({ 'products': this.buyProducts }));
-    this.router.navigate(['..']);
+    // this.productService.updateProducts(this.buyProducts).subscribe();
+    // this.store.dispatch(buy({ 'products': this.buyProducts }));
+    // this.router.navigate(['..']);
   }
 
   getInitFeeSum() {
