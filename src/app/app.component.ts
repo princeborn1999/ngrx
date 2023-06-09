@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-declare var myLibrary: any;
 interface Action {
   type: string;
   payload?: any
@@ -15,13 +14,9 @@ interface Action {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    myLibrary
-  }
+  ngOnInit(): void {}
 
   constructor(
     public router: Router,
-  ){
-
-  }
+  ){}
 }

@@ -10,15 +10,14 @@ export class CouponComponent implements coupon, OnInit {
   @Input() couponData!: coupon;
   couponId = '';
   couponType = '';
-  couponName = '$1,000免運券';
-  couponDescription = '低消$1,000';
+  couponName = '';
+  couponDescription = '';
   limit = 0;
   discount?: number;
   priceOff?: number;
   deliveryFree?: boolean;
 
-  constructor(){
-  }
+  constructor(){}
 
   ngOnInit(): void {
     this.couponId = this.couponData?.couponId;
