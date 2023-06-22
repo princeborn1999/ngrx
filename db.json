@@ -9,58 +9,44 @@
     {
       "productId": "1",
       "productName": "商品A",
-      "productPrice": 90,
-      "productCount": 77,
-      "productDesc": "我是商品A我是商品A我是商品A"
+      "productPrice": 160,
+      "productCount": 90,
+      "productDesc": "私は商品Aです"
     },
     {
       "productId": "2",
       "productName": "商品B",
-      "productPrice": 80,
+      "productPrice": 800,
       "productCount": 25,
-      "productDesc": "我是商品B我是商品B我是商品B"
+      "productDesc": "私は商品Bです"
     },
     {
       "productId": "3",
       "productName": "商品C",
-      "productPrice": 80,
-      "productCount": -43,
-      "productDesc": "我是商品C我是商品C我是商品C"
+      "productPrice": 299,
+      "productCount": 80,
+      "productDesc": "私は商品Cです"
     },
     {
       "productId": "4",
       "productName": "商品D",
-      "productPrice": 80,
-      "productCount": 41,
-      "productDesc": "我是商品D我是商品D我是商品D"
+      "productPrice": 590,
+      "productCount": 50,
+      "productDesc": "私は商品Dです"
     },
     {
       "productId": "5",
       "productName": "商品E",
-      "productPrice": 80,
-      "productCount": 50,
-      "productDesc": "我是商品E我是商品E我是商品E"
+      "productPrice": 450,
+      "productCount": 60,
+      "productDesc": "私は商品Eです"
     },
     {
       "productId": "6",
       "productName": "商品F",
-      "productPrice": 456,
-      "productCount": 700,
-      "productDesc": "我是商品F我是商品F我是商品F"
-    },
-    {
-      "productId": "7",
-      "productName": "商品G",
-      "productPrice": 80,
-      "productCount": 50,
-      "productDesc": "我是商品G我是商品G我是商品G"
-    },
-    {
-      "productId": "8",
-      "productName": "商品H",
-      "productPrice": 80,
-      "productCount": 50,
-      "productDesc": "我是商品H我是商品H我是商品H"
+      "productPrice": 499,
+      "productCount": 70,
+      "productDesc": "私は商品Fです"
     }
   ],
   "coupons": [

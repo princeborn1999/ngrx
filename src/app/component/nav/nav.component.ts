@@ -35,4 +35,7 @@ export class NavComponent {
       minWidth: '500px'
     })
   }
+  directHome(){
+
+  }
 }

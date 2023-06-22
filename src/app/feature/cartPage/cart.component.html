@@ -1,55 +1,63 @@
 <form [formGroup]="form">
-  <table class="w-full" formArrayName="produts">
-    <tr class="flex justify-between shadow-lg p-3">
-      <td class="flex-none mr-5">
-        <input type="checkbox" (change)="selectAll($event)" [checked]="checkedList.length >= 1">
-      </td>
-      <td class="basis-1/2">商品</td>
-      <td class="basis-1/4 text-center">單價</td>
-      <td class="basis-1/4 text-center">數量</td>
-      <td class="basis-1/4 text-center">總計</td>
-      <td class="basis-1/4 text-center">刪除</td>
-    </tr>
-    <ng-container *ngFor="let product of produts.controls,let i = index">
-      <tr [formGroupName]="i" class="flex justify-between shadow-lg mt-2 p-3">
+  <ng-container *ngIf="true">
+    <span class="text-lg text-red-500 m-5">
+      ショッピングカートに商品がありません。まず商品をショッピングカートに追加してください。</span>
+  </ng-container>
+  <ng-container *ngIf="true">
+    <table class="w-full" formArrayName="produts">
+      <tr class="flex justify-between shadow-lg p-3">
         <td class="flex-none mr-5">
-          <input type="checkbox" formControlName="checked" (change)="select(productList[i],i)">
+          <input type="checkbox" (change)="selectAll($event)" [checked]="checkedList.length >= 1">
         </td>
-        <td class="flex basis-1/2">
-          <h4 class="mr-10">{{productList[i].productName}}</h4>
-          <div>
-            <img src="https://picsum.photos/200/100?random={{i}}" alt={{productList[i].productName}}>
-          </div>
-        </td>
-        <td class="basis-1/4 text-center">${{productList[i].productPrice}}</td>
-        <td class="basis-1/4">
-          <div class="flex h-10 align-center justify-center">
-            <p class="border-zinc-950 w-10 text-center mb-0" (click)="minus(i, productList[i].productCount)">
-              -
-            </p>
-            <input class="border-zinc-950 w-20 bg-[transparent] text-center" type="number" value={{productList[i].productCount}}>
-            <p class="border-zinc-950 w-10 text-center mb-0" (click)="add(i)">
-              +
-            </p>
-          </div>
-        </td>
-        <td class="basis-1/4 text-center text-red-700">
-          ${{productList[i].productCount * productList[i].productPrice}}
-        </td>
-        <td class="basis-1/4 text-center">
-          <mat-icon (click)="delete(productList[i],i)">delete</mat-icon>
-        </td>
+        <td class="basis-1/2">商品</td>
+        <td class="basis-1/4 text-center">価格</td>
+        <td class="basis-1/4 text-center">量</td>
+        <td class="basis-1/4 text-center">合計金額</td>
+        <td class="basis-1/4 text-center">消去</td>
       </tr>
-    </ng-container>
-  </table>
+      <ng-container *ngFor="let product of produts.controls,let i = index">
+        <tr [formGroupName]="i" class="flex justify-between shadow-lg mt-2 p-3">
+          <td class="flex-none mr-5">
+            <input type="checkbox" formControlName="checked" (change)="select(productList[i],i)">
+          </td>
+          <td class="flex basis-1/2">
+            <h4 class="mr-10">{{productList[i].productName}}</h4>
+            <div>
+              <img src="https://picsum.photos/200/100?random={{i}}" alt={{productList[i].productName}}>
+            </div>
+          </td>
+          <td class="basis-1/4 text-center">${{productList[i].productPrice}}</td>
+          <td class="basis-1/4">
+            <div class="flex h-10 align-center justify-center">
+              <p class="border-zinc-950 w-10 text-center mb-0" (click)="minus(i, productList[i].productCount)">
+                -
+              </p>
+              <input class="border-zinc-950 w-20 bg-[transparent] text-center" type="number" value={{productList[i].productCount}}>
+              <p class="border-zinc-950 w-10 text-center mb-0" (click)="add(i)">
+                +
+              </p>
+            </div>
+          </td>
+          <td class="basis-1/4 text-center text-red-700">
+            ${{productList[i].productCount * productList[i].productPrice}}
+          </td>
+          <td class="basis-1/4 text-center">
+            <mat-icon (click)="delete(productList[i],i)">delete</mat-icon>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
 
-  <div class="flex flex-col items-end mt-5">
-    <h4>總金額(個商品)</h4>
-    <h4>${{feeSum()}}</h4>
-    <button
-      class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-      [disabled]="!checkedList.length" (click)="buy()">
-      去買單
-    </button>
-  </div>
-</form>
+    <div class="flex flex-col items-end mt-5">
+      <h4>總金額(個商品)</h4>
+      <h4>${{feeSum()}}</h4>
+      <button
+        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+        [disabled]="!checkedList.length" (click)="buy()">
+        去買單
+      </button>
+    </div>
+  </ng-container>
+
+
+  </form>
