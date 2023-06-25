@@ -1,12 +1,43 @@
 <!-- subtitle -->
-<div class="bg-[#FDFA79]">
-  <div class="rounded-md bg-yellow-400">
-    <marquee class="font-bold text-purple-700 p-1">A free platform that help you to buy product!</marquee>
-  </div>
-  <div class="flex justify-center">
-    <img src="assets/img/banner.jpg" alt="">
-  </div>
-  <!-- <div class="p-5 justify-center">
+<mat-drawer-container class="example-container" autosize>
+  <div class="bg-[#FDFA79]">
+    <div class="rounded-md bg-yellow-400">
+      <marquee class="font-bold text-purple-700 p-1">A free platform that help you to buy product!</marquee>
+    </div>
+    <div class="flex justify-center">
+      <img src="assets/img/banner.jpg" alt="">
+    </div>
+
+
+    <mat-drawer #drawer class="example-sidenav bg-purple-500" mode="side">
+      <form class="flex flex-col justify-between h-full" [formGroup]="form" ngNativeValidate>
+        <div class="flex flex-col">
+          <ng-container *ngFor="let search of searchBarList">
+            <mat-label class="text-white mb-3 text-lg">{{search.category}}</mat-label>
+            <input *ngIf="search.category === 'Search'" matInput class="mb-1" type="text" formControlName="searchInput">
+            <mat-slide-toggle *ngFor="let item of search.items" class="mb-1" formControlName={{item.control}}
+              (change)="changeSearch(search.category, item.control)">
+              <p class="text-white">{{item.title}}</p>
+            </mat-slide-toggle>
+          </ng-container>
+        </div>
+
+        <div class="flex flex-col">
+          <button
+            class="bg-yellow-400 hover:bg-yellow-700 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded flex align-center"
+            (click)="confirm()">
+            confirm
+          </button>
+          <button
+            class="bg-yellow-400 hover:bg-yellow-700 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded flex align-center"
+            (click)="reset()">
+            reset
+          </button>
+        </div>
+      </form>
+    </mat-drawer>
+
+    <!-- <div class="p-5 justify-center">
     <ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows"
       [showNavigationIndicators]="showNavigationIndicators">
       <ng-template ngbSlide *ngFor="let image of images">
@@ -18,21 +49,9 @@
       </ng-template>
     </ngb-carousel>
   </div> -->
-  <div class="p-5 justify-center">
-    <h2 class="shadow-sm">Our Products</h2>
-    <!-- filter -->
-    <section class="flex">
-      <mat-checkbox [checked]="" [color]="" [indeterminate]="" (change)="setAll($event.checked)">
-        Select All
-      </mat-checkbox>
-      <mat-checkbox [checked]="" [color]="" [indeterminate]="" (change)="setAll($event.checked)">
-        Male
-      </mat-checkbox>
-      <mat-checkbox [checked]="" [color]="" [indeterminate]="" (change)="setAll($event.checked)">
-        Female
-      </mat-checkbox>
-    </section>
-    <!-- range -->
-    <app-product-page></app-product-page>
+    <div class="p-5 justify-center">
+      <h2 class="shadow-sm" (click)="drawer.toggle()">Our Products</h2>
+      <app-product-page [filterList]="showList" [searchList]="showList1" [searchText]="searchText"></app-product-page>
+    </div>
   </div>
-</div>
+</mat-drawer-container>

@@ -7,7 +7,6 @@
     <form [formGroup]="form">
       <p class="mb-0 text-center">{{productDesc}}</p>
       <p class="mb-0 font-bold text-xl text-red-700 text-center mb-4">${{productPrice}}</p>
-      <!-- <p>賣場優惠券</p> -->
       <div class="flex justify-center align-center">
         <p class="mr-2 mb-0 text-xl cursor-pointer" (click)="reduce()">-</p>
         <input class="border-2 border-yellow-400 rounded-s" type="number" formControlName="count">

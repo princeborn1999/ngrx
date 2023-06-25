@@ -22,35 +22,35 @@ export const productReducer = createReducer(
     const hasSameProduct = state.cartProducts.length &&
       state.cartProducts.some(product => product.productId === action.cartProduct.productId);
 
-    const changeCartCounts = () => {
-      return state.cartProducts.map(product => {
-        if (product.productId === action.cartProduct.productId)
-          return {
+    const changeCartCounts = () => (
+      state.cartProducts.map(product => (
+        product.productId === action.cartProduct.productId ?
+          {
             ...product,
             productCount: +product.productCount + +action.cartProduct.productCount
-          };
-        return { ...product };
-      });
-    }
+          } :
+          product
+      )))
+
+    const addProducts = () => ([...state.cartProducts, action.cartProduct])
 
     return {
       ...state,
       cartProducts: hasSameProduct ?
         changeCartCounts() :
-        [...state.cartProducts, action.cartProduct]
+        addProducts()
     }
   }),
   on(addCartAction.plus, (state, action) => {
-    const changeCartCounts = () => {
-      return state.cartProducts.map(product => {
-        if (product.productId === action.cartProduct.productId)
-          return {
+    const changeCartCounts = () => (
+      state.cartProducts.map(product => (
+        product.productId === action.cartProduct.productId ?
+          {
             ...product,
             productCount: +action.cartProduct.productCount + 1,
-          }
-        return { ...product };
-      });
-    }
+          } :
+          product
+      )))
 
     return {
       ...state,
@@ -58,16 +58,15 @@ export const productReducer = createReducer(
     }
   }),
   on(addCartAction.minus, (state, action) => {
-    const changeCartCounts = () => {
-      return state.cartProducts.map(product => {
-        if (product.productId === action.cartProduct.productId)
-          return {
+    const changeCartCounts = () => (
+      state.cartProducts.map(product => (
+        product.productId === action.cartProduct.productId ?
+          {
             ...product,
             productCount: +action.cartProduct.productCount - 1
-          };
-        return { ...product };
-      });
-    }
+          } :
+          product
+      )))
 
     return {
       ...state,
@@ -76,8 +75,7 @@ export const productReducer = createReducer(
   }),
   on(addCartAction.deleteProdct, (state, action) => {
     const cartProducts = state.cartProducts.filter(product =>
-      product.productId !== action.cartProduct.productId
-    )
+      product.productId !== action.cartProduct.productId)
 
     return {
       ...state,
@@ -92,25 +90,11 @@ export const productReducer = createReducer(
   }),
   on(buy, (state, action) => {
     const buyListIds = action.products.map(list => list.productId);
-    const products = () => {
-      return state.products.map(product => {
-        if (buyListIds.indexOf(product.productId) !== -1)
-          return {
-            ...product,
-            productCount: product.productCount - action.products[buyListIds.indexOf(product.productId)].productCount
-          }
-        return product;
-      })
-    }
-
-    const cartProducts = () => {
-      return state.cartProducts.filter(product =>
-        buyListIds.indexOf(product.productId) === -1
-      )
-    }
+    const cartProducts = () => (state.cartProducts.filter(product =>
+      buyListIds.indexOf(product.productId) === -1))
 
     return {
-      products: products(),
+      ...state,
       cartProducts: cartProducts(),
       checkoutProucts: []
     }

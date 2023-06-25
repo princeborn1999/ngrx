@@ -49,3 +49,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+@import 'assets/css/reset.css';
+
+::ng-deep .mat-mdc-slide-toggle .mdc-switch:enabled .mdc-switch__track::after {
+  background-color: #ffc107!important;
+}

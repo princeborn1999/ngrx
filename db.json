@@ -9,58 +9,66 @@
     {
       "productId": "1",
       "productName": "商品A",
-      "productPrice": 90,
-      "productCount": 77,
-      "productDesc": "我是商品A我是商品A我是商品A"
+      "productPrice": 80,
+      "productCount": 96,
+      "productDesc": "我是商品A我是商品A我是商品A",
+      "category": ["male","child"]
     },
     {
       "productId": "2",
       "productName": "商品B",
       "productPrice": 80,
-      "productCount": 25,
-      "productDesc": "我是商品B我是商品B我是商品B"
+      "productCount": 97,
+      "productDesc": "我是商品B我是商品B我是商品B",
+      "category": ["female","child"]
     },
     {
       "productId": "3",
       "productName": "商品C",
       "productPrice": 80,
-      "productCount": -43,
-      "productDesc": "我是商品C我是商品C我是商品C"
+      "productCount": 93,
+      "productDesc": "我是商品C我是商品C我是商品C",
+      "category": ["female","adult"]
     },
     {
       "productId": "4",
       "productName": "商品D",
       "productPrice": 80,
-      "productCount": 41,
-      "productDesc": "我是商品D我是商品D我是商品D"
+      "productCount": 99,
+      "productDesc": "我是商品D我是商品D我是商品D",
+      "category": ["female","child"]
     },
     {
       "productId": "5",
       "productName": "商品E",
       "productPrice": 80,
-      "productCount": 50,
-      "productDesc": "我是商品E我是商品E我是商品E"
+      "productCount": 91,
+      "productDesc": "我是商品E我是商品E我是商品E",
+      "category": ["male","adult"]
     },
     {
       "productId": "6",
       "productName": "商品F",
       "productPrice": 456,
       "productCount": 700,
-      "productDesc": "我是商品F我是商品F我是商品F"
+      "productDesc": "我是商品F我是商品F我是商品F",
+      "category": ["male","adult"]
     },
     {
       "productId": "7",
       "productName": "商品G",
       "productPrice": 80,
-      "productCount": 50,
-      "productDesc": "我是商品G我是商品G我是商品G"
+      "productCount": 47,
+      "productDesc": "我是商品G我是商品G我是商品G",
+      "category": ["female","child"]
     },
     {
       "productId": "8",
       "productName": "商品H",
       "productPrice": 80,
-      "productCount": 50,
-      "productDesc": "我是商品H我是商品H我是商品H"
+      "productCount": 46,
+      "productDesc": "我是商品H我是商品H我是商品H",
+      "category": ["male","child"]
     }
   ],
   "coupons": [
@@ -85,7 +93,7 @@
       "couponType": "priceOff",
       "couponName": "滿$1000折$150",
       "couponDescription": "低消$1,000",
-      "limit": 150,
+      "limit": 1000,
       "priceOff": 150
     }
   ],

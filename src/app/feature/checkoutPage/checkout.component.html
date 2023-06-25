@@ -5,18 +5,21 @@
     <td class="basis-1/4 text-center">數量</td>
     <td class="basis-1/4 text-center">總計</td>
   </tr>
+
   <ng-container *ngIf="buyProduct$ | async as buyProducts">
-    <tr *ngFor="let product of buyProducts,let i = index" class="flex justify-between p-3">
+    <tr
+      *ngFor="let product of buyProducts,let i = index"
+      class="flex justify-between p-3">
       <td class="flex basis-1/2">
         <h4 class="mr-10">{{product.productName}}</h4>
         <div>
-          <img src="https://picsum.photos/200/100?random={{i}}" alt="">
+          <img
+            src="https://picsum.photos/200/100?random={{i}}"
+            alt="{{product.productName}}">
         </div>
       </td>
       <td class="basis-1/4 text-center">${{product.productPrice}}</td>
-      <td class="basis-1/4 text-center">
-        {{product.productCount}}
-      </td>
+      <td class="basis-1/4 text-center">{{product.productCount}}</td>
       <td class="basis-1/4 text-center">${{product.productCount * product.productPrice}}</td>
     </tr>
   </ng-container>
@@ -33,17 +36,39 @@
           選擇優惠券或輸入代碼
         </mat-panel-description>
       </mat-expansion-panel-header>
+
       <ng-container *ngIf="coupons$ | async as coupons">
         <p>運費抵用券</p>
         <ng-container *ngFor="let coupon of coupons">
-          <input (change)="changeFeeSum(coupon)" *ngIf="coupon.couponType === 'deliveryFree'" type="radio" formControlName="isDeliveryFree" value="true" [attr.disabled]="achieve(coupon)">
-          <app-coupon *ngIf="coupon.couponType === 'deliveryFree'" [couponData]="coupon"></app-coupon>
+          <app-radio
+            *ngIf="coupon.couponType === 'deliveryFree'"
+            (change)="changeFeeSum(coupon)"
+            formControlName="isDeliveryFree"
+            [value]="coupon.couponType"
+            [name]="'isDeliveryFree'"
+            [disabled]="canDiscount(coupon)">
+          </app-radio>
+          <app-coupon
+            *ngIf="coupon.couponType === 'deliveryFree'"
+            [couponData]="coupon">
+          </app-coupon>
         </ng-container>
+
         <p>折扣</p>
         <ng-container *ngFor="let coupon of coupons">
-          <input (change)="changeFeeSum(coupon)" *ngIf="coupon.couponType !== 'deliveryFree'" type="radio" formControlName="discount" value={{coupon.couponType}}
-          [attr.disabled]="achieve(coupon)">
-          <app-coupon *ngIf="coupon.couponType !== 'deliveryFree'" [couponData]="coupon"></app-coupon>
+          <app-radio
+            *ngIf="coupon.couponType !== 'deliveryFree'"
+            value={{coupon.couponType}}
+            (change)="changeFeeSum(coupon)"
+            formControlName="discount"
+            [value]="coupon.couponType"
+            [name]="'discount'"
+            [disabled]="canDiscount(coupon)">
+          </app-radio>
+          <app-coupon
+            *ngIf="coupon.couponType !== 'deliveryFree'"
+            [couponData]="coupon">
+          </app-coupon>
         </ng-container>
       </ng-container>
     </mat-expansion-panel>
@@ -52,6 +77,7 @@
 
 <div class="flex flex-col items-end mt-5">
   <h5>運費${{deliveryFee}}</h5>
+  <h5>商品費${{initFeeSum}}</h5>
   <h4>總金額({{productCounts}}個商品)</h4>
   <h4>${{feeSum}}</h4>
   <button

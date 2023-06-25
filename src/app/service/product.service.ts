@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, filter, from, map, switchMap } from 'rxjs';
+import { Observable, concatMap, from, map, switchMap, take } from 'rxjs';
+import { coupon } from '../model/interface';
 import { productsSelector } from '../store/selectors/prodctSelector';
 import { appStateInterface, productState } from '../store/state';
-import { coupon } from '../model/interface';
 
 
 @Injectable({
@@ -19,7 +19,9 @@ export class ProductService {
     private http: HttpClient,
     private store: Store<appStateInterface>,
   ) {
-    this.products$ = this.store.select(productsSelector);
+    this.products$ = this.store.select(productsSelector).pipe(
+      take(1)
+    );
   }
 
   getProducts(): Observable<any[]> {
@@ -30,14 +32,18 @@ export class ProductService {
     const buyListIds = buyProducts.map(buyProduct => buyProduct.productId);
 
     return this.products$.pipe(
-      switchMap(products => from(products).pipe(
-        filter(product => buyListIds.indexOf(product.productId) !== -1)
+      map(products => (
+        products
+          .filter(product =>
+            buyListIds.indexOf(product.productId) !== -1)
+          .map(product => ({
+            ...product,
+            productCount: product.productCount - buyProducts[buyListIds.indexOf(product.productId)].productCount
+          }))
       )),
-      map(product => ({
-        ...product,
-        productCount: product.productCount - buyProducts[buyListIds.indexOf(product.productId)].productCount
-      })),
-      switchMap(product => this.http.put<any[]>(`${this.productApiUrl}/${product.productId}`, product))
+      concatMap(products => from(products)),
+      switchMap(product =>
+        this.http.put<any[]>(`${this.productApiUrl}/${product.productId}`, product))
     )
   }
 
@@ -45,3 +51,5 @@ export class ProductService {
     return this.http.get<coupon[]>(this.couponApiUrl)
   }
 }
+
+

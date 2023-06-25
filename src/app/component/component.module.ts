@@ -30,6 +30,10 @@ import { CartComponent } from '../feature/cartPage/cart.component';
 import { CouponComponent } from './coupon/coupon.component';
 import { CheckoutComponent } from '../feature/checkoutPage/checkout.component';
 import { TestComponent } from './test/test.component';
+import { InputComponent } from './input/input.component';
+import { RadioComponent } from './radio/radio.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 @NgModule({
@@ -55,7 +59,8 @@ import { TestComponent } from './test/test.component';
     MatRippleModule,
     MatListModule,
     MatSidenavModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule
   ],
   declarations: [
     ProductComponent,
@@ -67,7 +72,9 @@ import { TestComponent } from './test/test.component';
     LoginComponent,
     CouponComponent,
     CheckoutComponent,
-    TestComponent
+    TestComponent,
+    InputComponent,
+    RadioComponent
   ],
   exports: [
     ProductComponent,
@@ -77,7 +84,9 @@ import { TestComponent } from './test/test.component';
     FooterComponent,
     ProductPageComponent,
     CouponComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    InputComponent,
+    RadioComponent
   ],
   providers: [
     {

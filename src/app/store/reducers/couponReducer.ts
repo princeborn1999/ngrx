@@ -12,12 +12,9 @@ export const initialState = {
 
 export const couponReducer = createReducer(
   initialState,
-  on(couponActions.loadCouponsSuccess, (state, { coupons }) => {
-    console.log('state',state)
-    console.log('coupons',coupons)
-
-    return {
+  on(couponActions.loadCouponsSuccess, (state, { coupons }) => (
+    {
       ...state,
       coupons
     }
-  }))
+  )))

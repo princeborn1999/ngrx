@@ -2,7 +2,10 @@
   <table class="w-full" formArrayName="produts">
     <tr class="flex justify-between shadow-lg p-3">
       <td class="flex-none mr-5">
-        <input type="checkbox" (change)="selectAll($event)" [checked]="checkedList.length >= 1">
+        <input
+          type="checkbox"
+          (change)="selectAll($event)"
+          [checked]="checkedList.length >= 1">
       </td>
       <td class="basis-1/2">商品</td>
       <td class="basis-1/4 text-center">單價</td>
@@ -13,22 +16,37 @@
     <ng-container *ngFor="let product of produts.controls,let i = index">
       <tr [formGroupName]="i" class="flex justify-between shadow-lg mt-2 p-3">
         <td class="flex-none mr-5">
-          <input type="checkbox" formControlName="checked" (change)="select(productList[i],i)">
+          <input
+            type="checkbox"
+            formControlName="checked"
+            (change)="select(productList[i],i)">
         </td>
         <td class="flex basis-1/2">
           <h4 class="mr-10">{{productList[i].productName}}</h4>
           <div>
-            <img src="https://picsum.photos/200/100?random={{i}}" alt={{productList[i].productName}}>
+            <img
+              src="https://picsum.photos/200/100?random={{i}}"
+              alt={{productList[i].productName}}>
           </div>
         </td>
-        <td class="basis-1/4 text-center">${{productList[i].productPrice}}</td>
+        <td class="basis-1/4 text-center">
+          ${{productList[i].productPrice}}
+        </td>
         <td class="basis-1/4">
           <div class="flex h-10 align-center justify-center">
-            <p class="border-zinc-950 w-10 text-center mb-0" (click)="minus(i, productList[i].productCount)">
+            <p
+              class="border-zinc-950 w-10 text-center mb-0"
+              (click)="minus(i, productList[i].productCount)">
               -
             </p>
-            <input class="border-zinc-950 w-20 bg-[transparent] text-center" type="number" value={{productList[i].productCount}}>
-            <p class="border-zinc-950 w-10 text-center mb-0" (click)="add(i)">
+            <input
+              class="border-zinc-950 w-20 bg-[transparent] text-center"
+              type="number"
+              value={{productList[i].productCount}}
+              [(ngModel)]="productList[i].productCount">
+            <p
+              class="border-zinc-950 w-10 text-center mb-0"
+              (click)="add(i)">
               +
             </p>
           </div>

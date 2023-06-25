@@ -1,5 +1,8 @@
 <div *ngIf="productList$ | async as productList" class="flex flex-wrap">
   <div class="grid grid-cols-3 gap-4">
-    <app-product *ngFor="let product of productList, let i = index " [product]="product" [imgId]="i"></app-product>
+    <app-product
+      *ngFor="let product of productList, let i = index "
+      [product]="product"
+      [imgId]="i"></app-product>
   </div>
 </div>

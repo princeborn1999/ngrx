@@ -9,7 +9,8 @@
     "test": "jest",
     "test:watch": "jest: --watch",
     "test:coverage": "jest --coverage",
-    "shop": "ng serve --port 9527"
+    "shop": "ng serve --port 9527",
+    "jsonServer": "json-server --watch --id productId db.json"
   },
   "private": true,
   "dependencies": {
@@ -62,13 +63,13 @@
     "setupFilesAfterEnv": [
       "<rootDir>/src/setup.jest.ts"
     ],
-    "testPathIgnorePatterns":[
+    "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/dist"
     ],
-    "globals":{
-      "ts-jest":{
-        "tsConfig":"<rootDir>/tsconfig.spec.json",
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json",
         "stringifyContentPathRegex": "\\.html$"
       }
     }

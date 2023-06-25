@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, concatMap, of } from 'rxjs';
-import { cart, product } from 'src/app/model/interface';
+import { cart } from 'src/app/model/interface';
 import { cartProductsSelector, productsSelector } from 'src/app/store/selectors/prodctSelector';
 import { appStateInterface, productState } from 'src/app/store/state';
 import * as addCartAction from '../../store/actions/cartAction';
 import { coupon } from './../../model/interface';
-import { AlertComponent } from 'src/app/component/alert/alert.component';
 
 
 
@@ -38,7 +37,6 @@ export class CartComponent implements OnInit, cart {
   constructor(
     private store: Store<appStateInterface>,
     private router: Router,
-    private route: ActivatedRoute,
     private fb: FormBuilder) {
     this.cartProduct$ = this.store.select(cartProductsSelector);
     this.productList$ = this.store.select(productsSelector);
@@ -60,7 +58,6 @@ export class CartComponent implements OnInit, cart {
   get produts() {
     return this.form.get('produts') as FormArray;
   }
-
 
   usingCoupon(coupon: coupon) {
     console.log('123');

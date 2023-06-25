@@ -10,4 +10,5 @@ export interface productState {
   productPrice: number;
   productCount: number;
   productDesc: string;
+  category: string[]
 }

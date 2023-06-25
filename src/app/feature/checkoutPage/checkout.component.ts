@@ -34,7 +34,6 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private store: Store<appStateInterface>,
     private router: Router,
-    private route: ActivatedRoute,
     private productService: ProductService
   ) {
     this.buyProduct$ = this.store.select(checkoutProductsSelector);
@@ -52,9 +51,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   buy() {
-    this.productService.updateProducts(this.buyProducts).subscribe();
     this.store.dispatch(buy({ 'products': this.buyProducts }));
-    this.router.navigate(['..']);
+    this.productService.updateProducts(this.buyProducts).subscribe(() =>
+      this.router.navigate(['..'])
+    );
   }
 
   getInitFeeSum() {
@@ -70,6 +70,7 @@ export class CheckoutComponent implements OnInit {
   changeFeeSum(coupon: coupon) {
     if (this.form.value.isDeliveryFree) {
       this.feeSum = this.initFeeSum - this.deliveryFee;
+      this.deliveryFee = 0;
     }
 
     if (this.form.value.discount) {
@@ -86,19 +87,13 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  //TODO not yet
-  achieve(coupon: coupon) {
-    console.log('coupon.limit',coupon.limit)
-    console.log('this.initFeeSum',this.initFeeSum)
+  canDiscount(coupon: coupon) {
     switch (coupon.couponType) {
       case 'deliveryFree':
-        console.log(this.initFeeSum < coupon.limit)
         return this.initFeeSum < coupon.limit;
       case 'discount':
-        console.log(this.productCounts < coupon.limit)
         return this.productCounts < coupon.limit;
       case 'priceOff':
-        console.log(this.initFeeSum < coupon.limit)
         return this.initFeeSum < coupon.limit;
       default:
         return false;
