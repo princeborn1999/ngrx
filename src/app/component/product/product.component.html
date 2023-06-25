@@ -7,27 +7,28 @@
     <form [formGroup]="form">
       <p class="mb-0 text-center">{{productDesc}}</p>
       <p class="mb-0 font-bold text-xl text-red-700 text-center mb-4">${{productPrice}}</p>
+      <!-- <p>賣場優惠券</p> -->
       <div class="flex justify-center align-center">
-        <p class="mr-2 mb-0 text-xl cursor-pointer" (click)="reduce()">-</p>
-        <input class="border-2 border-yellow-400 rounded-s" type="number" formControlName="count">
-        <p class="ml-2 mb-0 text-xl cursor-pointer" (click)="add()">+</p>
+        <p class="ml-2 mb-0 text-xl cursor-pointer" (click)="add()">足す</p>
+        <input class="border-2 border-black rounded-s" type="number" formControlName="count">
+        <p class="mr-2 mb-0 text-xl cursor-pointer" (click)="reduce()">引く</p>
       </div>
-      <p class="mb-0 text-center">還剩{{productCount}}件</p>
+      <p class="mb-0 text-center">残り{{productCount}}つ</p>
     </form>
   </mat-card-content>
   <mat-card-actions>
     <div class="flex justify-evenly w-100">
       <button
-        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded flex align-center"
+        class="bg-orange-500 hover:bg-orange-700  font-bold py-2 px-4 border-b-4 border-black hover:border-purple-500 rounded flex align-center"
         (click)="addCart()">
-        <mat-icon>favorite</mat-icon>
-          Add Cart
+        <!-- <mat-icon>favorite</mat-icon> -->
+        カートに追加する
       </button>
       <button
-        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded flex align-center"
+        class="bg-orange-500 hover:bg-orange-700  font-bold py-2 px-4 border-b-4 border-black hover:border-purple-500 rounded flex align-center"
         (click)="buy()">
-        <mat-icon>shopping_cart</mat-icon>
-          Buy Directly!
+        <!-- <mat-icon>shopping_cart</mat-icon> -->
+        直接購入
       </button>
     </div>
   </mat-card-actions>

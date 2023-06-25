@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { productsSelector } from 'src/app/store/selectors/prodctSelector';
+import { productsSelector } from '../../store/selectors/prodctSelector';
 import { appStateInterface, productState } from 'src/app/store/state';
 import { product } from 'src/app/model/interface';
 @Component({

@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from 'src/app/feature/loginPage/login.component';
+import { LoginComponent } from '../../feature/loginPage/login.component';
 import { appStateInterface, productState } from 'src/app/store/state';
-import { cartProductsSelector } from 'src/app/store/selectors/prodctSelector';
+import { cartProductsSelector } from '../../store/selectors/prodctSelector';
 
 @Component({
   selector: 'app-nav',
@@ -34,5 +34,8 @@ export class NavComponent {
       minHeight: '500px',
       minWidth: '500px'
     })
+  }
+  directHome(){
+
   }
 }
